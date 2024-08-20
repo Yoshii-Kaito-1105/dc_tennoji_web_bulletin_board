@@ -55,32 +55,35 @@
             </div>
             <h2 class="new-article">新しい記事を投稿する</h2>
             <!--このあたりに記事投稿機能-->
-            <div class="toukou">
-                <div class="liner">
-                    
+            <form action="./post.php" method="post">
+                <div class="toukou">
+                    <div class="liner">
+                        
                     <h3>新規投稿フォーム</h3>
                 </div>
                 <br>
                 <div class="toukounaiyou">
                     <!--改行するとずれるのでそのまま-->
-                    <div class="hissu" >必須</div>カテゴリー：<select name="category1">
+                    <div class="hissu" >必須</div>カテゴリー：
+                    <select name="category1">
                         <option value="frontend">フロントエンド</option>
                         <option value="backend">バックエンド</option>
                         <option value="infrastructure">インフラ</option>
                         <option value="game">ゲーム</option>
-                        
+                        <option value="code">効率的なコードの書き方</option>
                     </select>
                     <br>
                     <div class="toukouhonnbunn">
                         <div class="hissu" >必須</div>投稿内容：<textarea name="text" rows="5" required></textarea>
                     </div>
                     <div class="btn" type="submit">
-                        投稿する
+                        <button>投稿する</button>
                     </div>
                 </div>
             </div>
+        </form>
     </div>
-    <!--フッター埋め込み-->
+        <!--フッター埋め込み-->
         <?php include "./template/common/footer.html" ?>
         <?php include "./dba/dba.php";
         ?>
