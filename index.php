@@ -82,9 +82,8 @@
     </div>
     <!--フッター埋め込み-->
         <?php include "./template/common/footer.html" ?>
-        <script> 
-        
-        </script> 
+        <?php include "./dba/dba.php";
+        ?>
 </body>
     
 </body>
