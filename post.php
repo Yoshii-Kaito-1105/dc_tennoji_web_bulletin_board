@@ -8,6 +8,6 @@ include "./dba/dba.php";
 $category = $_POST["category1"];
 $text = $_POST["text"];
 // データベース接続する
-connectToDb();
-DB::connection("");// スキーマ名を指定
+$conn = connectToDb();
+$conn::connection("dc-bulletin-board-verti")->;// スキーマ名を指定
 disconnectDb();
