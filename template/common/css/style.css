@@ -154,7 +154,9 @@
       top: 16px;
   }
 
-
+  .menu-btn:hover {
+    background-color: #c4dfe6; /*ハンバーガーメニューにカーソルを当てると色が変わる*/
+  }
   #menu-btn-check:checked ~ .menu-content {
     right: 0%;/*メニューを画面内へ*/
   }
@@ -167,9 +169,9 @@
   
   /*メニュー欄*/
   .main-menu{
-    background-color: #a7bfd6;
+    background-color: #c4dfe6;
     display: flex;
-    text-align: center;
+    
     justify-content: center;
     align-items: center;
     
@@ -179,7 +181,12 @@
   .menu-link{
     padding-left: 0.5%;
     width:16%;
-    text-align: center;
+    
+  }
+
+  h3 {
+    white-space: pre;
+    margin-left: 30px;
   }
   
   /*メニューのカテゴリ*/
@@ -231,7 +238,7 @@
     
     
     margin: 0 auto;
-    margin-top: 70px;
+    margin-top: 70px;/*トップ画像がヘッダーの下に表示されるので位置調整*/
   }
 
 .new-page{
