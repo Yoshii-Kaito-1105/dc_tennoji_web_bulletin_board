@@ -7,6 +7,10 @@
 </head>
 <body>
 
+<?php //include "./dba/dba.php" ?>
+<?php //connectToDb(); ?>
+<?php //disconnectDb(); ?>
+
 
         <!--ヘッダー埋め込み-->
         <?php include "./template/common/header.html" ?>

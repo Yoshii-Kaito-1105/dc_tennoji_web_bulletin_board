@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
 
 include "./dba/dba.php";
 
@@ -8,6 +8,6 @@ include "./dba/dba.php";
 $category = $_POST["category1"];
 $text = $_POST["text"];
 // データベース接続する
-$conn = connectToDb();
-$conn::connection("dc-bulletin-board-verti")->;// スキーマ名を指定
+connectToDb();
+// $conn::connection("dc-bulletin-board-verti")->;// スキーマ名を指定
 disconnectDb();
