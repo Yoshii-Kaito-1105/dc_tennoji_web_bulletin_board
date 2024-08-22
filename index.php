@@ -7,6 +7,7 @@
 </head>
 <body>
 
+
         <!--ヘッダー埋め込み-->
         <?php include "./template/common/header.html" ?>
         
@@ -85,7 +86,6 @@
     </div>
         <!--フッター埋め込み-->
         <?php include "./template/common/footer.html" ?>
-        <?php include "./dba/dba.php";?>
 </body>
     
 </body>
