@@ -1,0 +1,411 @@
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Hiragino Kaku Gothic ProN";
+  letter-spacing: 0.05em;
+  min-width: 375px;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+a,a:hover,a:visited{
+  color: inherit;
+}
+
+.h2{
+  font-size: 24px;
+  text-align: center;
+}
+
+.h3{
+  
+  font-size:16px;
+  text-align: center;
+  padding-bottom: 3px;
+  border-bottom: solid 1px #fff;
+  
+}
+
+.header{
+  background-color: #66A5AD;  
+  height:80px;
+  width:100%;
+  
+  position:sticky;
+  top:0;  
+  z-index:10;
+  position: relative;
+  overflow: visible;
+}
+
+.header-left{
+  float: left;
+  
+}
+
+.header h1{
+  
+  color: #fff;
+  font-size:26px;
+  
+  padding-left:20px;
+  vertical-align: middle;
+
+}
+
+/*ハンバーガーメニュー*/
+.menu-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+  align-items: center;
+  z-index: 90;
+  background-color: #66A5AD;
+}
+.menu-btn span,
+.menu-btn span:before,
+.menu-btn span:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    position: absolute;
+}
+.menu-btn span:before {
+    bottom: 8px;
+}
+.menu-btn span:after {
+    top: 8px;
+}
+#menu-btn-check:checked ~ .menu-btn span {
+  background-color: rgba(255, 255, 255, 0);/*メニューオープン時は真ん中の線を透明にする*/
+}
+#menu-btn-check:checked ~ .menu-btn span::before {
+  bottom: 0;
+  transform: rotate(45deg);
+}
+#menu-btn-check:checked ~ .menu-btn span::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+#menu-btn-check {
+  display: none;
+}
+.menu-content {
+  width: 40%;
+  height: 50%;
+  position: fixed;
+  top: 0;
+  right: -40%;
+  z-index: 80;
+  background-color: #3584bb;
+  transition: all 0.5s;/*アニメーション設定*/
+}
+.menu-content ul {
+    padding: 70px 10px 0;
+}
+.menu-content ul li {
+    border-bottom: solid 1px #ffffff;
+    list-style: none;
+}
+
+.menu-content ul li a {
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    box-sizing: border-box;
+    color:#ffffff;
+    text-decoration: none;
+    padding: 9px 15px 10px 0;
+    position: relative;
+}
+.menu-content ul li a::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-top: solid 2px #ffffff;
+    border-right: solid 2px #ffffff;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 11px;
+    top: 16px;
+}
+
+
+#menu-btn-check:checked ~ .menu-content {
+  right: 0%;/*メニューを画面内へ*/
+}
+
+
+.clear{
+clear:both;
+}
+
+
+/*メニュー欄*/
+.main-menu{
+  background-color: #C4DFE6  ;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+
+.menu-link{
+  padding-left: 0.5%;
+  width:16%;
+  text-align: center;
+}
+
+/*メニューのカテゴリ*/
+.categories-link {
+  font-size: 20px;
+  font-weight: bold;
+  
+  top: 100%; /* 親要素の下に配置 */
+  left: 0;
+  z-index: 1000; /* メニューが他の要素の上に表示されるようにする */
+}
+.categories-link[open] summary ~ ul {
+  display: block; /* メニューを展開する際に表示 */
+  position: absolute; /* 絶対配置で親要素の高さに影響を与えない */
+  background-color: #fff; /* 必要に応じて背景色を調整 */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* メニューに影をつける */
+}
+.categories-link ul{
+  background-color: rightblue;
+  display: none;
+}
+
+.categories-link li{
+  list-style: none;
+}
+
+.sub li{
+  font-weight: normal;
+}
+
+.container {
+  max-width: 90%;
+  /* margin: 0 auto; */
+}
+
+/* メニュー */
+h3 {
+  white-space: pre;
+  margin-left: 30px;
+}
+
+/* メニューカテゴリー */
+.categories-link {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.main-img {
+  width: 100%;
+  height: 70vh;
+  background-image: url(D:\★★★★★★★★★★★portfolio\dc_tennoji_web_bulletin_board\image\image7.jpeg);
+  background-position: center top 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* 検索バーの中央寄せ */
+.article {
+  margin-top: 80px;
+  text-align: center;
+}
+
+/* 全体の中央寄せ */
+#article-img {
+  text-align: center;
+}
+
+/* 未経験者案内 */
+#article-img h2 {
+  margin: 80px auto;
+  width: 200px;
+  font-size: 24px;
+  color: #f25c00;
+  border-bottom: 5px solid #f9a603;
+}
+
+/* フロントエンド */
+#article-img h3 {
+  font-size: 24px;
+  color: #e1b80d;
+  margin-top: 50px;
+}
+
+/* 説明文 */
+#article-img p {
+  white-space: pre;
+}
+
+/* バックエンド */
+.backend {
+  margin-top: 80px;
+  text-align: center;
+}
+
+/* バックエンド タイトル*/
+.backend h3 {
+  font-size: 24px;
+  color: #002c54;
+}
+
+/* バックエンド テキスト*/
+.backend p {
+  white-space: pre;
+}
+
+/* インフラ　中央寄せ */
+.inhura {
+  text-align: center;
+  margin-top: 80px;
+}
+
+/* インフラ タイトル*/
+.inhura h3 {
+  font-size: 24px;
+  color: #00abf4;
+}
+
+/* インフラ テキスト*/
+.inhura p {
+  white-space: pre;
+}
+
+/* ゲーム　中央寄せ */
+.game {
+  text-align: center;
+  margin-top: 80px;
+}
+
+/* ゲーム タイトル*/
+.game h3 {
+  font-size: 24px;
+  color: #00abf4;
+}
+
+/* ゲーム テキスト*/
+.game p {
+  white-space: pre;
+  margin-bottom: 80px;
+}
+
+footer {
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  background-color: #217ca3;
+}
+
+.copyright {
+  padding-top: 20px;
+  color: #fff;
+}
+
+/*スマホサイズ*/
+@media all and (max-width: 768px) {
+  .header {
+    box-sizing: border-box;
+  }
+
+  .top-image {
+    background-position: center;
+  }
+  .container {
+    width: 90%;
+  }
+
+  .header h1,
+  .container h1,
+  .footer h1 {
+    font-size: 20px;
+  }
+
+  .header h1 {
+    line-height: 46px;
+  }
+
+  .menu-btn {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    display: flex;
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    background-color: #3584bb;
+  }
+  .menu-btn span,
+  .menu-btn span:before,
+  .menu-btn span:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    position: absolute;
+  }
+  .menu-btn span:before {
+    bottom: 8px;
+  }
+  .menu-btn span:after {
+    top: 8px;
+  }
+  #menu-btn-check:checked ~ .menu-btn span {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  #menu-btn-check:checked ~ .menu-btn span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+  }
+  #menu-btn-check:checked ~ .menu-btn span::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .menu-content {
+    width: 50%;
+    right: -50%;
+  }
+
+  #menu-btn-check:checked ~ .menu-content {
+    right: 0%;
+  }
+
+  .menu-content ul {
+    padding: 30px 5px 0;
+    height: 50%;
+  }
+
+  .menu-content ul li {
+    height: 40px;
+    width: 100%;
+    border-bottom: solid 1px #ffffff;
+    list-style: none;
+  }
+}
