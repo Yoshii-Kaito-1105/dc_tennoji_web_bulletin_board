@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style-common.css">
+</head>
+<body>
+    <div class="container">
+        <!--トップ画像-->
+        
+        <!--検索バー-->
+
+            <h2 class="new-page">最新の記事</h2>
+            <!--このあたりに記事-->
+            <div class="toukou">
+                
+                <div class="article-status">
+                    <!--タイムスタンプ-->
+                    <div class="username" id="username">投稿者　ディーキャリア太郎</div>
+                    <div class="time-stamp" id="time-stamp">投稿日　2024年8月21日</div>
+                    <div class="article-category" id="article-category">カテゴリー名　フロントエンド</div>
+                </div>
+                <!--記事本文-->
+                <div class="honbun">PHPファイルを作る時は拡張子を.phpで作った方がいいよ</div>
+                <div class="article-buttons">
+                    <div class="article-btn edit">編集</div>
+                    <div class="article-btn delete">削除</div>
+                    
+                </div>
+            </div>
+            <h2 class="new-article">新しい記事を投稿する</h2>
+            <!--このあたりに記事投稿機能-->
+            <form action="./post.php" method="post">
+                <div class="toukou">
+                    <div class="liner">
+                        
+                    <h3>新規投稿フォーム</h3>
+                </div>
+                <br>
+                <div class="toukounaiyou">
+                    <!--改行するとずれるのでそのまま-->
+                    <div class="hissu" >必須</div>カテゴリー：<select name="main-category">
+                        <option value="">選択してください</option>
+                        <option value="frontend">フロントエンド</option>
+                        <option value="backend">バックエンド</option>
+                        <option value="infrastructure">インフラ</option>
+                        <option value="game">ゲーム</option>
+                        
+                    </select>
+                    <br>
+                    <div class="hissu" >必須</div>サブカテゴリー：<select name="sub-category">
+                        <option value="">選択してください</option>
+                        
+                        
+                    </select>
+                    <br>
+                    <div class="toukouhonnbunn">
+                        <div class="hissu" >必須</div>投稿内容：<textarea name="text" rows="5" required></textarea>
+                    </div>
+                    <div class="btn" type="submit">
+                        <button>投稿する</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        // #sub-categoryの中身を準備
+  var items = {
+    frontend:[
+      ['選択してください',''],
+      ['HTML'],
+      ['CSS'],
+      ['Javascript']
+    ],
+    backend:[
+      ['選択してください',''],
+      ['PHP'],
+      [''],
+    ],
+    infrastructure:[
+      ['選択してください',''],
+      ['PHP'],
+      [''],
+    ],
+    game:[
+      ['選択してください',''],
+      ['C++'],
+      ['C#'],
+      ['unity']
+    ],
+  };
+
+  var none = $('#sub-category').html(); //#sub-categoryの最初の状態
+  $("#sub-category").attr("disabled", true); //#main-categoryが「選択してください」では操作不可に
+
+  $('#main-category').on('change', function(){
+    var cont = $(this).val(); //選択された項目のvalueを取得
+    if(cont){ //valueに何か値が入っていた場合
+      var item = items[cont]; //リストからカテゴリに登録された製品の配列を取得
+      $("#sub-category").attr("disabled", false); //#sub-categoryを選択可能に
+      $('#sub-category').html('');
+      var option;
+      for(var i = 0; i < item.length; i++){
+        option = '<option value="' + item[i][1] + '">' + item[i][0] + '</option>';
+        $('#sub-category').append(option);
+      }
+    } else { //valueに何も値が入っていない場合
+      $("#sub-category").attr("disabled", true);
+      $('#sub-category').html(none); //保存された最初の状態に戻す
+    }
+  });
+
+
+
+    </script>
+</body>
+</html>
