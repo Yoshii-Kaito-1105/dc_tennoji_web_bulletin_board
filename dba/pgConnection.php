@@ -16,13 +16,11 @@ function connectToDb() {
         $password = $dao->getPassword();
         global $dbh;
         $dbh = new PDO("pgsql:host=$host;port=$port;dbname=$dbName;user=$user;password=$password");
-<<<<<<< HEAD:dba/pgConnection.php
-        echo "<script>console.log('データベース接続に接続しました。');</script>";
         
-=======
-        echo "データベースに接続しました。。";
-        echo "<script>console.log('データベースに接続しました。');</script>";
->>>>>>> 0536ce06b644ce86c543ba7d8a29e806255e6c19:dba/dba.php
+        return $dbh;
+        
+        echo "<script>console.log('データベース接続に接続しました。');</script>";        
+
     } catch (PDOException $e) {
         $e->getMessage();
         echo "<script>console.log('データベース接続に失敗しました');</script>";

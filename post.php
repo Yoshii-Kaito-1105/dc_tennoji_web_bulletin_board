@@ -2,17 +2,25 @@
 
 // use Illuminate\Support\Facades\DB;
 
-include "./dba/dba.php";
+include "./dba/pgConnection.php";
+// include "./entity/Article.php";
+
 
 // 送信データを受け取る(index.php)
-$category = $_POST["category1"];
-$text = $_POST["text"];
+// $category = $_POST["category1"];
+// $text = $_POST["text"];
+
+
+
 // データベース接続する
 $dbh = connectToDb();
 // sqlクエリ
-$sql = "select * from  dc-bulletin-board-verti.major_categories";
+$sql = "select * from major_categories";
 
-// $dbh->setAttribute
+$stmt = $dbh->prepare($sql);
+
+
+echo $stmt->execute();
+
 // disconnectDb();
-
-// function 
+// env()
