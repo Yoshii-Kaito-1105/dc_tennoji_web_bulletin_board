@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="./template/common/css/style.css">
 </head>
 <body>
-
+    <?php include "./dba/pgConnection.php" ?>
+    <?php connectToDb(); ?>
+    <?php disconnectDb(); ?>
 
         <!--ヘッダー埋め込み-->
         <?php include "./template/common/header.html" ?>
