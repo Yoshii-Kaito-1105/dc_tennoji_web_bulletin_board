@@ -7,20 +7,36 @@ include "./dba/pgConnection.php";
 
 
 // 送信データを受け取る(index.php)
-// $category = $_POST["category1"];
-// $text = $_POST["text"];
+$category = htmlspecialchars($_POST["category1"]);
+$text = htmlspecialchars($_POST["text"]);
 
 
+if ($category !== null && $text !== null) {
+    
+}
+var_dump($category);
+var_dump($text);
 
+// 送信データを受け取る
+// 入力のバリデーションを行う
+// データベースに保存する
+// 登録メッセージを出力する
+// 画面に遷移する
+
+/*
 // データベース接続する
-$dbh = connectToDb();
+$pdo = connectToDb();
 // sqlクエリ
-$sql = "select * from major_categories";
+$sql = "select * from minor_categories";
+$stmt = $pdo->query($sql);
+foreach ($stmt as $record) {
+    print_r($record);
+    // var_dump($record);
+}
 
-$stmt = $dbh->prepare($sql);
 
-
-echo $stmt->execute();
 
 // disconnectDb();
 // env()
+*/
+?>
