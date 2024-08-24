@@ -85,7 +85,7 @@
         <!--フッター埋め込み-->
         <?php include "./template/common/footer.html" ?>
 
-        <?php // include "post.php" ?>
+        <?php  include "post.php" ?>
 </body>
     
 </body>
