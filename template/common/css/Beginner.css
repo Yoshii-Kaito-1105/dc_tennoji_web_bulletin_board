@@ -260,6 +260,11 @@ h3 {
   white-space: pre;
 }
 
+
+#article-img li {
+  text-align: left;
+}
+
 /* バックエンド */
 .backend {
   margin-top: 80px;
