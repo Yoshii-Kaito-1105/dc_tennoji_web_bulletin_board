@@ -71,6 +71,18 @@
                         <option value="game">ゲーム</option>
                         <option value="code">効率的なコードの書き方</option>
                     </select>
+                    <select name="category2">
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="js">JavaScript</option>
+                        <option value="py">Python</option>
+                        <option value="java">Java</option>
+                        <option value="ruby">Ruby</option>
+                        <option value="php">PHP</option>
+                        <option value="cs">C#</option>
+                        <option value="cpp">C++</option>
+                        <option value="swift">Swift</option>
+                    </select>
                     <br>
                     <div class="toukouhonnbunn">
                         <div class="hissu" >必須</div>投稿内容：<textarea name="text" rows="5" required></textarea>
@@ -84,8 +96,6 @@
     </div>
         <!--フッター埋め込み-->
         <?php include "./template/common/footer.html" ?>
-
-        <?php  include "post.php" ?>
 </body>
     
 </body>

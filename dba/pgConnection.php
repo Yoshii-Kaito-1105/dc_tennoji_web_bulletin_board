@@ -1,25 +1,28 @@
 <!-- データベース接続管理 -->
 <?php
+
 include "PgDao.php";
 
 $dbh = null;
-function connectToDb() {
+
+function connectToDb() 
+{
     try {
         // クラスをインスタンス化;
         $dao = new PgDao();
-        // DBに接続する
         $host = $dao->getHost();
-        // それぞれに値をセット
         $port = $dao->getPort();
         $dbName = $dao->getDbName();
         $user = $dao->getUserName();
         $password = $dao->getPassword();
+
         global $dbh;
-        $dbh = new PDO("pgsql:host=$host;port=$port;dbname=$dbName;user=$user;password=$password");
+        $dbh = new PDO(
+            "pgsql:host=$host;port=$port;dbname=$dbName;user=$user;password=$password"
+        );
         
+        echo "<script>console.log('データベースに接続しました');</script>";
         return $dbh;
-        
-        echo "<script>console.log('データベース接続に接続しました。');</script>";        
 
     } catch (PDOException $e) {
         $e->getMessage();
@@ -28,9 +31,10 @@ function connectToDb() {
     
 }
 // DBの接続を切る
-function disconnectDb() {
+function disconnectDb() 
+{
+    echo "<script>console.log('データベースの接続を切断しました');</script>";
     global $dbh;
-    $dbh = null;
-    echo "<script>console.log('データベース接続を切断しました');</script>";
+    return $dbh = null;
 }
 
