@@ -91,6 +91,7 @@ try {
 
     global $dbh;
     $dbh = disconnectDb();
+    // 
     require "./index.php";
 
 
@@ -105,16 +106,5 @@ try {
 // 登録メッセージを出力する
 // 画面に遷移する
 
-// connectToDb();
-// sqlクエリ
-// $sql = "select * from minor_categories";
-// $stmt = $pdo->query($sql);
-// $result = $stmt->fetchAll();
-
-// echo $result;
-// foreach ($stmt as $record) {
-//     print_r($record);
-//     // var_dump($record);
-// }
 
 ?>

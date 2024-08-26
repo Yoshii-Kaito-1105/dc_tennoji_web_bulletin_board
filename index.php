@@ -63,25 +63,20 @@
                 <br>
                 <div class="toukounaiyou">
                     <!--改行するとずれるのでそのまま-->
-                    <div class="hissu" >必須</div>カテゴリー：
-                    <select name="category1">
+                    <div class="hissu" >必須</div>カテゴリー：<select name="mainCategory" id="mainCategory">
+                        <option value="">選択してください</option>
                         <option value="frontend">フロントエンド</option>
                         <option value="backend">バックエンド</option>
                         <option value="infrastructure">インフラ</option>
                         <option value="game">ゲーム</option>
                         <option value="code">効率的なコードの書き方</option>
+                        
                     </select>
-                    <select name="category2">
-                        <option value="html">HTML</option>
-                        <option value="css">CSS</option>
-                        <option value="js">JavaScript</option>
-                        <option value="py">Python</option>
-                        <option value="java">Java</option>
-                        <option value="ruby">Ruby</option>
-                        <option value="php">PHP</option>
-                        <option value="cs">C#</option>
-                        <option value="cpp">C++</option>
-                        <option value="swift">Swift</option>
+                    <br>
+                    <div class="hissu" >必須</div>サブカテゴリー：<select name="subCategory" id="subCategory">
+                        <option value=" ">選択してください</option>
+                        
+                        
                     </select>
                     <br>
                     <div class="toukouhonnbunn">
@@ -94,6 +89,60 @@
             </div>
         </form>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        
+
+        // #subCategoryの中身を準備
+        var items = {
+            frontend:[
+                ['選択してください', ''],
+                ['HTML', 'HTML'],
+                ['CSS', 'CSS'],
+                ['JavaScript', 'JavaScript']
+            ],
+            backend:[
+                ['選択してください', ''],
+                ['Python', 'Python'],
+                ['Java', 'Java'],
+            ],
+            infrastructure:[
+                ['選択してください', ''],
+                ['Python', 'Python'],
+                ['Ruby', 'Ruby'],
+                ['Java', 'Java']
+            ],
+            game:[
+                ['選択してください', ''],
+                ['C++', 'C++'],
+                ['C#', 'C#'],
+                ['Swift', 'Swift']
+            ],
+        };
+
+        var none = $('#subCategory').html(); // #subCategoryの最初の状態
+        $("#subCategory").attr("disabled", true); // #mainCategoryが「選択してください」のときは操作不可に
+
+        $('#mainCategory').on('change', function(){
+            var cont = $(this).val(); // 選択された項目のvalueを取得
+            if(cont){ // valueに何か値が入っていた場合
+                var item = items[cont]; // リストからカテゴリに登録されたサブカテゴリの配列を取得
+                $("#subCategory").attr("disabled", false); // #subCategoryを選択可能に
+                $('#subCategory').html('');
+                var option;
+                for(var i = 0; i < item.length; i++){
+                    option = '<option value="' + item[i][1] + '">' + item[i][0] + '</option>';
+                    $('#subCategory').append(option);
+                }
+            } else { // valueに何も値が入っていない場合
+                $("#subCategory").attr("disabled", true);
+                $('#subCategory').html(none); // 保存された最初の状態に戻す
+            }
+        });
+
+
+
+    </script>
         <!--フッター埋め込み-->
         <?php include "./template/common/footer.html" ?>
 </body>
