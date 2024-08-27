@@ -1,8 +1,9 @@
+<!-- 投稿機能 -->
 <?php
 
-date_default_timezone_set('Asia/Tokyo');
-
 include "./dba/pgConnection.php";
+// 投稿日と更新日を日本時間に適用する
+date_default_timezone_set('Asia/Tokyo');
 
 $dbh = null;
 try {
@@ -11,98 +12,98 @@ try {
     global $dbh;
     $dbh = connectToDb();
     $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
-    // 
+    $isEmpty = false; // 未入力
+    $erromMsg = "";
+    
+    // フォームの入力値を受け取る
     $userId = 1;
+    $mainCategory = htmlspecialchars($_POST["mainCategory"]);
+    $subCategory = @htmlspecialchars($_POST["subCategory"]);
     $text = htmlspecialchars($_POST["text"]);
-    $majorCategory = htmlspecialchars($_POST["mainCategory"]);
-    $minorCategory = htmlspecialchars($_POST["subCategory"]);
     $createdAt = date("Y-m-d H:i:s");
-    $inputMiss;
+
 
     // カテゴリの未入力チェック
-    if ($majorCategory == null || $majorCategory == "") {
-        disconnectDb();
-        global $inputMiss;
-        $inputMiss = null;
-        echo "<h1>カテゴリーを選択してください</h1>";
-        var_dump($inputMiss);
-        require "./index.php";
-        return false;
-    // サブカテゴリの未入力チェック
-    } else if ($majorCategory == null || $majorCategory == "") {
-        disconnectDb();
-        global $inputMiss;
-        $inputMiss = null;
-        echo "<h1>サブカテゴリーを選択してください</h1>";
-        var_dump($inputMiss);
-        require "./index.php";
-        return false;
+    if( empty($mainCategory) ) {
+        $isEmpty = true;
+        global $erromMsg;
+        $erromMsg = "<h3>メインカテゴリが未選択です。</h3>";
+        
+        // サブカテゴリの未入力チェック
+    } else if( empty($subCategory) ) {
+        $isEmpty = true;
+        global $erromMsg;
+        $erromMsg = "<h3>サブカテゴリが未選択です。</h3>";
     }
 
-    global $inputMiss;
-    if ($inputMiss == null) {
-        $majorCategory = $inputMiss;
-        $minorCategory = $inputMiss;
-        $text = $inputMiss;
-        $createdAt = $inputMiss;
-        var_dump($majorCategory);
-        var_dump($minorCategory);
-        print_r($text);
-        var_dump($createdAt);
-        return;
+    if ($isEmpty) {
+        $userId = null;
+        $mainCategory = null;
+        $subCategory = null;
+        $text = null;
+        $createdAt = null;
+        global $erromMsg;   
+        echo $erromMsg;
     }
 
-        // カテゴリの内容をセットする
-        switch ($majorCategory) {
-            case "frontend":
-                $majorCategory = 1;
-                break;
-            case "backend":
-                $majorCategory = 2;
-                break;
-            case "infrastructure":
-                $majorCategory = 3;
-                break;
-            case "game":
-                $majorCategory = 4;
-                break;
-            case "code":
-                $majorCategory = 5;
-                break;
-        }
-        switch ($minorCategory) {
-            case "HTML":
-                $minorCategory = 1;
-                break;
-            case "CSS":
-                $minorCategory = 2;
-                break;
-            case "JavaScript":
-                $minorCategory = 3;
-                break;
-            case "Python":
-                $minorCategory = 4;
-                break;
-            case "Java":
-                $minorCategory = 5;
-                break;
-            case "Ruby":
-                $minorCategory = 6;
-                break;
-            case "PHP":
-                $minorCategory = 7;
-                break;
-            case "C#":
-                $minorCategory = 8;
-                break;
-            case "C++":
-                $minorCategory = 9;
-                break;
-            case "Swift":
-                $minorCategory = 10;
-                break;
-        }
+
+    // メインカテゴリをセットする
+    switch ($mainCategory) {
+        case "frontend":
+            $mainCategory = 1; // フロントエンド
+            break;
+        case "backend":
+            $mainCategory = 2; // バックエンド
+            break;
+        case "infrastructure":
+            $mainCategory = 3; // インフラ
+            break;
+        case "game":
+            $mainCategory = 4; // ゲーム
+            break;
+        case "code":
+            $mainCategory = 5; // 効率的なコードの書き方
+            break;
+    }
+
+    // サブカテゴリをセットする
+    switch ($subCategory) {
+        case "HTML":
+            $subCategory = 1; // html
+            break;
+        case "CSS":
+            $subCategory = 2; // css
+            break;
+        case "JavaScript":
+            $subCategory = 3; // javascript
+            break;
+        case "Python":
+            $subCategory = 4; // python
+            break;
+        case "Java":
+            $subCategory = 5; // java
+            break;
+        case "Ruby":
+            $subCategory = 6; // ruby
+            break;
+        case "PHP":
+            $subCategory = 7; // php
+            break;
+        case "C#":
+            $subCategory = 8; // C#
+            break;
+        case "C++":
+            $subCategory = 9; // C++
+            break;
+        case "Swift": // Swift
+            $subCategory = 10;
+            break;
+    }
+
+        // echo "<p> メインカテゴリ名: " . var_dump($mainCategory) . "</p><br>";
+        // echo "<p>サブカテゴリ名: " . var_dump($subCategory) . "</p><br>";
+        // echo "<p>メインカテゴリID: " . var_dump($majorCategoryId) . "</p><br>";
+        // echo "<p>サブカテゴリID: " . var_dump($minorCategoryId) . "</p><br>";
 
 
         // $stmt = $dbh->prepare(
@@ -116,8 +117,8 @@ try {
         // $stmt->bindValue(':user_id', $userId, PDO::PARAM_INT);
         // $stmt->bindValue(':content', $text, PDO::PARAM_STR);
         // $stmt->bindValue(':created_at', $createdAt, PDO::PARAM_STR);
-        // $stmt->bindValue(':minor_category_id', $minorCategory, PDO::PARAM_INT);
-        // $stmt->bindValue(':major_category_id', $majorCategory, PDO::PARAM_INT);
+        // $stmt->bindValue(':minor_category_id', $minorCategoryId, PDO::PARAM_INT);
+        // $stmt->bindValue(':major_category_id', $majorCategoryId, PDO::PARAM_INT);
         // $stmt->execute();
 
 
