@@ -7,7 +7,7 @@
 </head>
 <body>
         <!--ヘッダー埋め込み-->
-        <?php include "./template/common/header.html" ?>
+        <?php require_once "./common/header.php" ?>
         
         <img  class="top-image" src="./image/仮置き画像.gif"></img> 
         <div class="hamburger-menu">
@@ -144,7 +144,7 @@
 
     </script>
         <!--フッター埋め込み-->
-        <?php include "./template/common/footer.html" ?>
+        <?php require_once "./common/footer.php" ?>
 </body>
     
 </body>
