@@ -1,0 +1,510 @@
+html{
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Hiragino Kaku Gothic ProN";
+    letter-spacing: 0.05em;
+    min-width: 375px;
+  
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  a,a:hover,a:visited{
+    color: inherit;
+  }
+  
+  .h2{
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .h3{
+    
+    font-size:16px;
+    text-align: center;
+    padding-bottom: 3px;
+    border-bottom: solid 1px #fff;
+    
+  }
+  
+  .header{
+    background-color: #66A5AD;  
+    height:80px;
+    width:100%;
+    
+    position:sticky;
+    top:0;  
+    z-index:10;
+    position: relative;
+    overflow: visible;
+  }
+  
+  .header-left{
+    float: left;
+    
+  }
+  
+  .header h1{
+    
+    color: #fff;
+    font-size:26px;
+    
+    padding-left:20px;
+    vertical-align: middle;
+  
+  }
+  
+  /*ハンバーガーメニュー*/
+  .menu-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    background-color: #66A5AD;
+  }
+  .menu-btn span,
+  .menu-btn span:before,
+  .menu-btn span:after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 25px;
+      border-radius: 3px;
+      background-color: #ffffff;
+      position: absolute;
+  }
+  .menu-btn span:before {
+      bottom: 8px;
+  }
+  .menu-btn span:after {
+      top: 8px;
+  }
+  #menu-btn-check:checked ~ .menu-btn span {
+    background-color: rgba(255, 255, 255, 0);/*メニューオープン時は真ん中の線を透明にする*/
+  }
+  #menu-btn-check:checked ~ .menu-btn span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+  }
+  #menu-btn-check:checked ~ .menu-btn span::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+  #menu-btn-check {
+    display: none;
+  }
+  .menu-content {
+    width: 40%;
+    height: 50%;
+    position: fixed;
+    top: 0;
+    right: -40%;
+    z-index: 80;
+    background-color: #3584bb;
+    transition: all 0.5s;/*アニメーション設定*/
+  }
+  .menu-content ul {
+      padding: 70px 10px 0;
+  }
+  .menu-content ul li {
+      border-bottom: solid 1px #ffffff;
+      list-style: none;
+  }
+  
+  .menu-content ul li a {
+      display: block;
+      width: 100%;
+      font-size: 15px;
+      box-sizing: border-box;
+      color:#ffffff;
+      text-decoration: none;
+      padding: 9px 15px 10px 0;
+      position: relative;
+  }
+  .menu-content ul li a::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-top: solid 2px #ffffff;
+      border-right: solid 2px #ffffff;
+      transform: rotate(45deg);
+      position: absolute;
+      right: 11px;
+      top: 16px;
+  }
+  
+  
+  #menu-btn-check:checked ~ .menu-content {
+    right: 0%;/*メニューを画面内へ*/
+  }
+  
+  
+  .clear{
+  clear:both;
+  }
+  
+  
+  /*メニュー欄*/
+  .main-menu{
+    background-color: #C4DFE6;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  
+  .menu-link{
+    padding-left: 0.5%;
+    width:16%;
+    text-align: center;
+  }
+  
+  /*メニューのカテゴリ*/
+  .categories-link {
+    font-size: 20px;
+    font-weight: bold;
+    
+    top: 100%; /* 親要素の下に配置 */
+    left: 0;
+    z-index: 1000; /* メニューが他の要素の上に表示されるようにする */
+  }
+  .categories-link[open] summary ~ ul {
+    display: block; /* メニューを展開する際に表示 */
+    position: absolute; /* 絶対配置で親要素の高さに影響を与えない */
+    background-color: #fff; /* 必要に応じて背景色を調整 */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* メニューに影をつける */
+  }
+  .categories-link ul{
+    background-color: rightblue;
+    display: none;
+  }
+  
+  .categories-link li{
+    list-style: none;
+  }
+    .container {
+      max-width: 90%;
+      /* margin: 0 auto; */
+    }
+    
+    /* メニュー */
+    h3 {
+      white-space: pre;
+      margin-left: 30px;
+    }
+    
+    /* メニューカテゴリー */
+    .categories-link {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    
+    /* メイン画像　ヘッダー */
+    .main-img {
+      width: 100%;
+      height: 70vh;
+      background-image: url(image/image/image4.jpeg);
+      background-position: center top 30%;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    
+    /* 検索バーの中央寄せ */
+    .article {
+      margin-top: 80px;
+      text-align: center;
+     
+    }
+
+      /* 学習サイト　中央寄せ*/
+    #main-content {
+       margin-top: 80px;
+        text-align: center;
+    }
+
+    /* 学習サイト紹介*/
+    #main-content h2 {
+        color: #73b7f7;
+        font-size: 24px;
+    }
+  
+    /* プロゲート　画像 */
+    #main-content img {
+        margin-top: 80px;
+        width: 800px;
+        height: 500px;
+    }
+
+    /* プロゲート　リンク間の余白 */
+    #main-content p {
+      margin: 50px 0px;
+    }
+
+    /* プロゲート　テキスト */
+    .main-text {
+      text-align: center;
+      margin-bottom: 80px;
+        white-space: pre-line;
+    }
+
+    /* プロゲート　リンクカラー */
+    #main-content a {
+      font-size: 20px;
+      font-weight: bold;
+        color: #3f3fff;
+       border-bottom: 2px solid #a9a4ff;
+    }
+
+    /* ドットインストール　中央寄せ */
+    .sub-content {
+      margin-top: 80px;
+      text-align: center;
+
+    }
+
+    /* ドットインストール　画像 */
+    .sub-content img {
+      margin-top: 80px;
+      width: 800px;
+      height: 500px;
+    }
+
+    /* ドットインストール　リンクカラー */
+    .sub-content a {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffaa00;
+      border-bottom: 2px solid #f6f361;
+    }
+
+    /* ドットインストール　リンク間の余白 */
+    .sub-content p {
+      margin: 50px 0px;
+    }
+
+    /* paizaラーニング　中央寄せ */
+    .sub-section {
+      text-align: center;
+    }
+    
+    /* paizaラーニング　画像 */
+    .sub-section img {
+      margin-top: 80px;
+      width: 800px;
+      height: 500px;
+    }
+
+    /* paizaラーニング　リンクカラー */
+    .sub-section a {
+      font-size: 20px;
+      font-weight: bold;
+      color: #05ff11;
+      border-bottom: 2px solid #a1ff8c;
+    }
+
+/* paizaラーニング　リンク間の余白 */
+    .sub-section p {
+      margin: 50px 0px;
+    }
+
+    /* Schoo　中央寄せ */
+    .section {
+      margin-top: 80px;
+        text-align: center;
+
+    }
+
+    /* Schoo　画像 */
+    .section img {
+      margin-top: 80px;
+      width: 800px;
+      height: 500px;
+    }
+
+    /* Schoo　リンクカラー */
+    .section a {
+      font-size: 20px;
+      font-weight: bold;
+      color: #05c1ff;
+      border-bottom: 2px solid #006fe5;
+
+    }
+
+    /* Schoo　リンク間の余白 */
+    .section p {
+      margin: 50px 0px;
+    }
+
+    /* シラバス　中央寄せ */
+    .section2 {
+      margin-top: 80px;
+      text-align: center;
+
+    }
+
+    /* シラバス　画像 */
+    .section2 img {
+      margin-top: 80px;
+      width: 800px;
+      height: 500px;
+    }
+
+    /* シラバス　リンクカラー */
+    .section2 a {
+      font-size: 20px;
+      font-weight: bold;
+      color: #2bff00;
+      border-bottom: 2px solid #fffb00;
+
+    }
+
+
+    /* シラバス　リンク間の余白 */
+    .section2 p {
+      margin: 50px 0px;
+    }
+
+    /* InfraAcademy　中央寄せ */
+    .section3 {
+      margin-top: 80px;
+      text-align: center;
+
+    }
+
+    /* InfraAcademy　画像 */
+    .section3 img {
+      margin-top: 80px;
+      width: 800px;
+      height: 500px;
+    }
+
+    /* InfraAcademy　リンクカラー */
+    .section3 a {
+      font-size: 20px;
+      font-weight: bold;
+      color: #f50010;
+      border-bottom: 2px solid #ff9900;
+
+    }
+
+    /* InfraAcademy　リンク間の余白 */
+    .section3 p {
+      margin: 50px 0px;
+    }
+
+
+     /* フッター */
+  footer {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    background-color: #217ca3;
+  }
+  
+  /* フッター　ロゴ */
+  .copyright {
+    padding-top: 20px;
+    color: #fff;
+  }
+
+
+  /*スマホサイズ*/
+@media all and (max-width: 768px) {
+  .header {
+    box-sizing: border-box;
+  }
+
+  .top-image {
+    background-position: center;
+  }
+  .container {
+    width: 90%;
+  }
+
+  .header h1,
+  .container h1,
+  .footer h1 {
+    font-size: 20px;
+  }
+
+  .header h1 {
+    line-height: 46px;
+  }
+
+  .menu-btn {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    display: flex;
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    background-color: #3584bb;
+  }
+  .menu-btn span,
+  .menu-btn span:before,
+  .menu-btn span:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    position: absolute;
+  }
+  .menu-btn span:before {
+    bottom: 8px;
+  }
+  .menu-btn span:after {
+    top: 8px;
+  }
+  #menu-btn-check:checked ~ .menu-btn span {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  #menu-btn-check:checked ~ .menu-btn span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+  }
+  #menu-btn-check:checked ~ .menu-btn span::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .menu-content {
+    width: 50%;
+    right: -50%;
+  }
+
+  #menu-btn-check:checked ~ .menu-content {
+    right: 0%;
+  }
+
+  .menu-content ul {
+    padding: 30px 5px 0;
+    height: 50%;
+  }
+
+  .menu-content ul li {
+    height: 40px;
+    width: 100%;
+    border-bottom: solid 1px #ffffff;
+    list-style: none;
+  }
+}
