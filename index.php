@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>掲示板ホーム画面</title>
-    <link rel="stylesheet" href="./template/common/css/style.css">
+    <link rel="stylesheet" href="./common/css/style.css">
 </head>
 <body>
         <!--ヘッダー埋め込み-->

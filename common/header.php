@@ -18,7 +18,7 @@
         <div class="clear"></div>
         <div class="main-menu">
             <h3><a class="menu-link" href="掲示板モック.html#article">HOME</a></h3>
-            <h3><a class="menu-link" href="未経験者案内.html#article-img">未経験案内</a></h3>
+            <h3><a class="menu-link" href="../../dc_tennoji_web_bulletin_board/template/contents/掲示板の使い方.html">未経験案内</a></h3>
             <h3><a class="menu-link" href="掲示板の使い方.html#article-title">掲示板の使い方</a></h3>
             <h3><a class="menu-link" href="">学習サイト</a></h3>
             <details class="categories-link">
@@ -36,7 +36,7 @@
                         </ul>
                     </details>
 
-                    <a href="../template/contents/backend/backend-contents.php"><li>バックエンド</li></a>
+                    <a href="../../dc_tennoji_web_bulletin_board/template/contents/backend/backend-contents.php"><li>バックエンド</li></a>
                     <details class="categories-link">
                         <summary>各項目</summary>
                         <ul id="categories">
