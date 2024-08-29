@@ -163,6 +163,59 @@ html{
   clear:both;
   }
 
+   /*メニュー欄*/
+   h3 {
+    white-space: pre;
+    margin-left: 30px;
+  }
+
+  .main-menu{
+    background-color: #a7bfd6;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+
+  .menu-link{
+    padding-left: 0.5%;
+    width:16%;
+    text-align: center;
+  }
+  
+  /*メニューのカテゴリ*/
+  .categories-link {
+    font-size: 20px;
+    font-weight: bold;
+    
+    top: 100%; /* 親要素の下に配置 */
+    left: 0;
+    z-index: 1000; /* メニューが他の要素の上に表示されるようにする */
+  }
+  .categories-link[open] summary ~ ul {
+    display: block; /* メニューを展開する際に表示 */
+    position: absolute; /* 絶対配置で親要素の高さに影響を与えない */
+    background-color: #fff; /* 必要に応じて背景色を調整 */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* メニューに影をつける */
+}
+  .categories-link ul{
+    background-color: rightblue;
+    display: none;
+  }
+
+  .categories-link li{
+    list-style: none;
+  }
+
+  .sub li{
+    font-weight: normal;
+  }
+
+
   /*新規投稿の部分　投稿者名はログイン情報から引っ張る方がいいかも*/
   .honbun{
     width: 80%;
@@ -224,54 +277,8 @@ html{
     
   }
 
-
   
-  /*メニュー欄*/
-  .main-menu{
-    background-color: #a7bfd6;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    
-  }
-
-
-  .menu-link{
-    padding-left: 0.5%;
-    width:16%;
-    text-align: center;
-  }
   
-  /*メニューのカテゴリ*/
-  .categories-link {
-    font-size: 20px;
-    font-weight: bold;
-    
-    top: 100%; /* 親要素の下に配置 */
-    left: 0;
-    z-index: 1000; /* メニューが他の要素の上に表示されるようにする */
-  }
-  .categories-link[open] summary ~ ul {
-    display: block; /* メニューを展開する際に表示 */
-    position: absolute; /* 絶対配置で親要素の高さに影響を与えない */
-    background-color: #00bfff; /* 必要に応じて背景色を調整 */
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* メニューに影をつける */
-}
-  .categories-link ul{
-    background-color: rightblue;
-    display: none;
-  }
-
-  .categories-link li{
-    list-style: none;
-  }
-
-  .sub li{
-    font-weight: normal;
-  }
 
 
 
