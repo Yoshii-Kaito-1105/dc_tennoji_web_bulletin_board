@@ -25,7 +25,7 @@
                 <summary>カテゴリー</summary>
                 <ul id="categories">
                     <li href="">エンジニア分野</li>
-                    <li href="">フロントエンド</li>
+                    <a href="../../dc_tennoji_web_bulletin_board/template/contents/frontend/frontend-contents.php"><li>フロントエンド</li></a>
                     <details class="categories-link">
                         <summary>各項目</summary>
                         <ul id="categories">
