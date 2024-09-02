@@ -117,8 +117,8 @@ try {
         // $stmt->bindValue(':user_id', $userId, PDO::PARAM_INT);
         // $stmt->bindValue(':content', $text, PDO::PARAM_STR);
         // $stmt->bindValue(':created_at', $createdAt, PDO::PARAM_STR);
-        // $stmt->bindValue(':minor_category_id', $minorCategoryId, PDO::PARAM_INT);
-        // $stmt->bindValue(':major_category_id', $majorCategoryId, PDO::PARAM_INT);
+        // $stmt->bindValue(':minor_category_id', $subCategory, PDO::PARAM_INT);
+        // $stmt->bindValue(':major_category_id', $mainCategory, PDO::PARAM_INT);
         // $stmt->execute();
 
 

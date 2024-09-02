@@ -1,38 +1,38 @@
 <!-- バックエンドの記事一覧ページ -->
 <?php
 
-// 投稿日と更新日を日本時間に適用する
-date_default_timezone_set('Asia/Tokyo');
-// 別階層にあるDBコネクタの読み込み
-require_once(__DIR__ . "/../../../dba/pgConnection.php");
-// データベースに接続
-$dbh = connectToDb();
+    // 投稿日と更新日を日本時間に適用する
+    date_default_timezone_set('Asia/Tokyo');
+    // 別階層にあるDBコネクタの読み込み
+    require_once(__DIR__ . "/../../../dba/pgConnection.php");
+    // データベースに接続
+    $dbh = connectToDb();
 
-// データベースからメインカテゴリのIDが2(バックエンド)のレコードを全て取得する
-$sql = 
-    "select 
-        u.name as user_name,
-        a.created_at,
-        mjrc.name as major_category_name,
-        minc.name as minor_category_name,
-        a.content
-    from 
-        articles a
-    inner join 
-        users u
-    on a.user_id = u.user_id
-    inner join
-        major_categories mjrc
-    on a.major_category_id = mjrc.major_category_id
-    inner join 
-        minor_categories minc
-    on a.minor_category_id = minc.minor_category_id
-    where
-        a.major_category_id = 2";
-$stmt = $dbh->query($sql);
-$articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// 記事テーブルにあるレコード数を取得する
-$recodeCount = $stmt->rowCount(); 
+    // データベースからメインカテゴリのIDが2(バックエンド)のレコードを全て取得する
+    $sql = 
+        "select 
+            u.name as user_name,
+            a.created_at,
+            mjrc.name as major_category_name,
+            minc.name as minor_category_name,
+            a.content
+        from 
+            articles a
+        inner join 
+            users u
+        on a.user_id = u.user_id
+        inner join
+            major_categories mjrc
+        on a.major_category_id = mjrc.major_category_id
+        inner join 
+            minor_categories minc
+        on a.minor_category_id = minc.minor_category_id
+        where
+            a.major_category_id = 2";
+    $stmt = $dbh->query($sql);
+    $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // 記事テーブルにあるレコード数を取得する
+    $recodeCount = $stmt->rowCount(); 
 ?>
 <!DOCTYPE html>
 <html lang="ja">

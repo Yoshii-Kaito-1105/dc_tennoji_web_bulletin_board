@@ -45,7 +45,7 @@
                             <li href="">Java</li>
                         </ul>
                     </details>
-                    <li href="">インフラ</li>
+                    <a href="../../dc_tennoji_web_bulletin_board/template/contents/infra/infra-content.php"><li>インフラ</li></a>
                     <details class="categories-link">
                         <summary>各項目</summary>
                         <ul id="categories">
