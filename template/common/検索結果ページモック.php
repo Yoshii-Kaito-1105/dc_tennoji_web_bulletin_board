@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>検索結果</title>
+    <link rel="stylesheet" href="./css/style-common.css">
 </head>
 <body>
     <?php include "header.html" ?>
 
-    <!--検索バー-->
+    
     <div class="container">
+        <!--検索バー-->
         <form method="get" action="#" class="search_container">
         <div class="hissu" >必須</div>カテゴリー：<select name="mainCategory" id="mainCategory">
                         <option value="">選択してください</option>
@@ -17,7 +19,7 @@
                         <option value="backend">バックエンド</option>
                         <option value="infrastructure">インフラ</option>
                         <option value="game">ゲーム</option>
-                        
+                        <option value="code">効率的なコードの書き方</option>
                     </select>
                     
                     <div class="hissu" >必須</div>サブカテゴリー：<select name="subCategory" id="subCategory">
@@ -28,10 +30,10 @@
                     <input type="text" size="25" placeholder=" キーワード検索">
                     <input type="submit" value="検索">
         </form>
-
+    <!--この辺に検索結果-->
     </div>
 
-    <!--この辺に検索結果-->
+    
     <?php include "footer.html" ?>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -64,6 +66,9 @@
                 ['C#', 'C#'],
                 ['Swift', 'Swift']
             ],
+            code:[
+                ['未分類', 'uncategorized']
+            ]
         };
 
         var none = $('#subCategory').html(); // #subCategoryの最初の状態

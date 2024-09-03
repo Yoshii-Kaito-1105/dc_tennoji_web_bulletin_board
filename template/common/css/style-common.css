@@ -175,7 +175,7 @@ html{
     text-align: center;
     justify-content: center;
     align-items: center;
-    
+    margin-bottom: 80px;
   }
 
 
@@ -215,6 +215,17 @@ html{
     font-weight: normal;
   }
 
+  .container{
+    
+    max-width: 90%;
+    margin: 0 auto;
+    margin-top: 80px;
+  }
+  .container h2{
+    text-align: center;
+    margin :0 auto;
+    margin-bottom: 10px;
+  }
 
   /*新規投稿の部分　投稿者名はログイン情報から引っ張る方がいいかも*/
   .honbun{
