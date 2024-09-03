@@ -222,7 +222,7 @@ h3 {
 .main-img {
   width: 100%;
   height: 70vh;
-  background-image: url(D:\★★★★★★★★★★★portfolio\dc_tennoji_web_bulletin_board\image\image7.jpeg);
+  background-image: url("D:\★★★★★★★★★★★portfolio\dc_tennoji_web_bulletin_board\image\image7.jpeg");
   background-position: center top 10%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -258,6 +258,11 @@ h3 {
 /* 説明文 */
 #article-img p {
   white-space: pre;
+}
+
+
+#article-img li {
+  text-align: left;
 }
 
 /* バックエンド */
