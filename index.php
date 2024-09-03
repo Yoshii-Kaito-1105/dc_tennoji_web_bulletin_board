@@ -9,6 +9,7 @@
         <!--ヘッダー埋め込み-->
         <?php require_once "./common/header.php" ?>
         
+        <!-- ホーム画面の画像 -->
         <img  class="top-image" src="./image/仮置き画像.gif"></img> 
         <div class="hamburger-menu">
             <input type="checkbox" id="menu-btn-check">
@@ -40,9 +41,9 @@
                 
                 <div class="article-status">
                     <!--タイムスタンプ-->
-                    <div class="username" id="username">投稿者　ディーキャリア太郎</div>
-                    <div class="time-stamp" id="time-stamp">投稿日　2024年8月21日</div>
-                    <div class="article-category" id="article-category">カテゴリー名　フロントエンド</div>
+                    <div class="username" id="username">投稿者 ディーキャリア太郎</div>
+                    <div class="time-stamp" id="time-stamp">投稿日 2024年8月21日</div>
+                    <div class="article-category" id="article-category">カテゴリー名 フロントエンド</div>
                 </div>
                 <!--記事本文-->
                 <div class="honbun">PHPファイルを作る時は拡張子を.phpで作った方がいいよ</div>
@@ -97,29 +98,32 @@
         var items = {
             frontend:[
                 ['選択してください', ''],
-                ['HTML', 'HTML'],
-                ['CSS', 'CSS'],
-                ['JavaScript', 'JavaScript']
+                ['HTML', 'html'],
+                ['CSS', 'css'],
+                ['JavaScript', 'js']
             ],
             backend:[
                 ['選択してください', ''],
-                ['Python', 'Python'],
-                ['Java', 'Java'],
+                ['Python', 'py'],
+                ['Java', 'java'],
+                ['PHP', 'php'],
+                ['Ruby', 'rb'],
+                ['JavaScript', 'js']
             ],
             infrastructure:[
                 ['選択してください', ''],
-                ['Python', 'Python'],
-                ['Ruby', 'Ruby'],
-                ['Java', 'Java']
+                ['Python', 'py'],
+                ['Ruby', 'rb'],
+                ['Java', 'java']
             ],
             game:[
                 ['選択してください', ''],
-                ['C++', 'C++'],
-                ['C#', 'C#'],
-                ['Swift', 'Swift']
+                ['C++', 'cpp'],
+                ['C#', 'cs'],
+                ['Swift', 'swift']
             ],
             code:[
-                ['未分類', 'Uncategorized'],
+                ['未分類', 'uncategorized']
             ]
         };
 
