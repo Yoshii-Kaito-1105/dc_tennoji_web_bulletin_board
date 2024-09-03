@@ -118,6 +118,9 @@
                 ['C#', 'C#'],
                 ['Swift', 'Swift']
             ],
+            code:[
+                ['未分類', 'Uncategorized'],
+            ]
         };
 
         var none = $('#subCategory').html(); // #subCategoryの最初の状態
