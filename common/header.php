@@ -64,7 +64,17 @@
                                 <li href="">C++</li>
                                 <li href="">Swift</li>
                             </ul>
-                        </details>
+                    </details>
+                    <a href="/dc_tennoji_web_bulletin_board/template/contents/code/codeTechnic.php"><li>効率的なコードの書き方</li></a>
+                    <details class="categories-link">
+                        <summary>各項目</summary>                        
+                            <ul id="categories">
+                                各言語
+                                <li href="">C#</li>
+                                <li href="">C++</li>
+                                <li href="">Swift</li>
+                            </ul>
+                    </details>
                 </ul>
 
             </details>
