@@ -1,5 +1,6 @@
-<!-- インフラの記事一覧ページ -->
+<!-- フロントエンドの記事一覧ページ -->
 <?php
+
     // 投稿日と更新日を日本時間に適用する
     date_default_timezone_set('Asia/Tokyo');
     // 別階層にあるDBコネクタの読み込み
@@ -7,7 +8,7 @@
     // データベースに接続
     $dbh = connectToDb();
 
-    // データベースからメインカテゴリのIDが3(インフラ)のレコードを全て取得する
+    // データベースからメインカテゴリのIDが1(フロントエンド)のレコードを全て取得する
     $sql = 
         "select 
             u.name as user_name,
@@ -27,7 +28,7 @@
             minor_categories minc
         on a.minor_category_id = minc.minor_category_id
         where
-            a.major_category_id = 3";
+            a.major_category_id = 1";
     $stmt = $dbh->query($sql);
     $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // 記事テーブルにあるレコード数を取得する
@@ -38,7 +39,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>インフラの記事一覧</title>
+    <title>フロントエンドの記事一覧</title>
     <link rel="stylesheet" href="../../common/css/style.css">
 </head>
 <body>
@@ -64,9 +65,9 @@
                     </p>
                     <p class="article-category" id="article-category">カテゴリー名: {$majorCategory} </p>
                     <p class="article-category" id="article-category">サブカテゴリー名:{$minorCategory}  </p>
-                    <!--記事本文-->
-                    <p class="contents">本文: {$content}</p>
                 </div>
+                <!--記事本文-->
+                <p class="contents">本文: {$content}</p>
                     <div class="article-buttons">
                         <button type="submit" class="article-btn edit">編集</button>
                         <button type="submit" class="article-btn delete">削除</button>

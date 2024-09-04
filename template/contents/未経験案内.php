@@ -1,74 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
     <title>掲示板未経験者案内</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="D:\github\dc_tennoji_web_bulletin_board\template\common\css\Beginner.css">
+    <link rel="stylesheet" href="../common/css/Beginner.css">
+    <link rel="stylesheet" href="../common/css/style.css">
 </head>
 
 <body>
-    <div class="header">
-        <div class="header-left">
-            <h1 >掲示板</h1>
-            <div class="clear"></div>
-        </div>
-        
-        
-        <div class="clear"></div>
-        <div class="main-menu">
-            <h3><a class="menu-link" href="掲示板モック.html#article">HOME</a></h3>
-            <h3><a class="menu-link" href="未経験案内.html#article-img">未経験案内</a></h3>
-            <h3><a class="menu-link" href="掲示板の使い方.html#article-title">掲示板の使い方</a></h3>
-            <h3><a class="menu-link" href="">学習サイト</a></h3>
-            <details class="categories-link">
-                <summary>カテゴリー</summary>
-                <ul id="categories">
-                    <li href="">分野</li>
-                    <details class="sub">
-                        <summary>フロントエンド
-                        </summary>
-                    <!--</summary>の下にサブカテゴリを入れる-->
-                        <li href="">HTML&CSS</li>
-                        <li href="">JavaScript</li>
-                    </details>
-                    <details class="sub">
-                        <summary>バックエンド
-                        </summary>
-                        <li href="">HTML&CSS</li>
-                        <li href="">JavaScript</li>
-                    </details>
-                    <details class="sub">
-                        <summary>インフラ
-                        </summary>
-                        <li href="">HTML&CSS</li>
-                        <li href="">JavaScript</li>
-                    </details>
-                    <details class="sub">
-                        <summary>ゲーム
-                        </summary>
-                        <li href="">HTML&CSS</li>
-                        <li href="">JavaScript</li>
-                    </details>
-                    <details class="sub">
-                        <summary>各言語
-                        </summary>
-                        <li href="">HTML&CSS</li>
-                        <li href="">JavaScript</li>
-                    </details>
-                    <li href="">各スレッド</li>
-                </ul>
-            </details>
-            
-            
-            
-            
-
-        </div>
-    </div>
-    
+    <!--ヘッダー埋め込み-->
+    <?php require_once(__DIR__.   '../../common/header.php') ?>
     
     
     <div class="hamburger-menu">
@@ -191,15 +135,13 @@
 
 
 
-
+    <!--ヘッダー埋め込み-->
+    <?php require_once(__DIR__.   '../../common/footer.php') ?>
 
 
     </main>
 
-    <footer>
-        <p class="copyright">Copyright©2024 d-coreer天王寺オフィス</p>
 
-    </footer>
 </body>
 
 </html>

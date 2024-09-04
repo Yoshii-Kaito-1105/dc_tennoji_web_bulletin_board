@@ -5,90 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>掲示板 学習サイト</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="D:\github\dc_tennoji_web_bulletin_board\template\common\css\study.css">
+    <link rel="stylesheet" href="../common/css/study.css">
+    <link rel="stylesheet" href="../common/css/style.css">
 </head>
 <body>
-    <div class="header">
-        <div class="header-left">
-            <h1 >掲示板</h1>
-            <div class="clear"></div>
-        </div>
-        
-        
-        <div class="clear"></div>
-        <div class="main-menu">
-            <h3><a class="menu-link" href="掲示板モック.html#article">HOME</a></h3>
-            <h3><a class="menu-link" href="未経験者案内.html#article-img">未経験案内</a></h3>
-            <h3><a class="menu-link" href="掲示板の使い方.html#article-title">掲示板の使い方</a></h3>
-            <h3><a class="menu-link" href="学習サイト.html.#main-content">学習サイト</a></h3>
-            <details class="categories-link">
-                <summary>カテゴリー</summary>
-                <ul id="categories">
-                    <li href="">分野</li>
-                    <details class="sub">
-                        <summary>フロントエンド
-                        </summary>
-                    <!--</summary>の下にサブカテゴリを入れる-->
-                        <li href="">HTML&CSS</li>
-                        <li href="">JavaScript</li>
-                    </details>
-                    <details class="sub">
-                        <summary>バックエンド
-                        </summary>
-                        <li href="">HTML&CSS</li>
-                        <li href="">JavaScript</li>
-                    </details>
-                    <details class="sub">
-                        <summary>インフラ
-                        </summary>
-                        <li href="">HTML&CSS</li>
-                        <li href="">JavaScript</li>
-                    </details>
-                    <details class="sub">
-                        <summary>ゲーム
-                        </summary>
-                        <li href="">HTML&CSS</li>
-                        <li href="">JavaScript</li>
-                    </details>
-                    <details class="sub">
-                        <summary>各言語
-                        </summary>
-                        <li href="">HTML&CSS</li>
-                        <li href="">JavaScript</li>
-                    </details>
-                    <li href="">各スレッド</li>
-                </ul>
-            </details>
-            
-            
-            
-            
-
-        </div>
-    </div>
-    
-    
-    
-    <div class="hamburger-menu">
-        <input type="checkbox" id="menu-btn-check">
-        <label for="menu-btn-check" class="menu-btn"><span></span></label>
-        <div class="menu-content">
-            <h2>月別記事メニュー</h2>
-            <ul>
-                <li>
-                    <a href="">2024年9月分の記事</a>
-                </li>
-                <li>
-                    <a href="">2024年10月分の記事</a>
-                </li>
-                <li>
-                    <a href="">2024年11月分の記事</a>
-                </li>
-
-            </ul>
-        </div>
-    </div>
-
+    <!--ヘッダー埋め込み-->
+    <?php require_once(__DIR__.   '../../common/header.php') ?>
     <main>
         <div class="main-img"></div>
 
@@ -103,7 +25,7 @@
         </div>
         <div id="main-content">
             <h2>学習サイト紹介</h2>
-            <img src="D:\github\dc_tennoji_web_bulletin_board\image\プロゲートpng.png" alt="">
+            <img src="/dc_tennoji_web_bulletin_board/image/プロゲートpng.png" alt="">
             <p><a href="https://prog-8.com/">Progateへ</a></p>
         </div>
         <div class="text">
@@ -113,7 +35,7 @@
         </div>
 
         <div class="sub-content">
-            <img src="D:\github\dc_tennoji_web_bulletin_board\image\ドットインストール.png" alt="">
+            <img src="/dc_tennoji_web_bulletin_board/image/ドットインストール.png" alt="">
             <p><a href="https://dotinstall.com/">ドットインストールへ</a></p>
         </div>
         <div class="text">
@@ -122,7 +44,7 @@
         </div>
 
         <div class="sub-section">
-            <img src="D:\github\dc_tennoji_web_bulletin_board\image\ラーニング.png" alt="">
+            <img src="/dc_tennoji_web_bulletin_board/image/ラーニング.png" alt="">
             <p><a href="https://paiza.jp/works">paizaラーニングへ</a></p>
         </div>
         <div class="text">
@@ -132,7 +54,7 @@
         </div>
 
         <div class="section">
-            <img src="D:\github\dc_tennoji_web_bulletin_board\image\Schoo.png" alt="">
+            <img src="/dc_tennoji_web_bulletin_board/image/Schoo.png" alt="">
             <p><a href="https://schoo.jp/">Schooへ</a></p>
         </div>
         <div class="text">
@@ -141,7 +63,7 @@
         </div>
 
         <div class="section2">
-            <img src="D:\github\dc_tennoji_web_bulletin_board\image\シラバス.png" alt="">
+            <img src="/dc_tennoji_web_bulletin_board/image/シラバス.png" alt="">
             <p><a href="https://cyllabus.jp/">シラバスへ</a></p>
         </div>
         <div class="text">
@@ -150,7 +72,7 @@
         </div>
 
         <div class="section3">
-            <img src="D:\github\dc_tennoji_web_bulletin_board\image\インフラ系学習.png" alt="">
+            <img src="/dc_tennoji_web_bulletin_board/image/インフラ系学習.png" alt="">
             <p><a href="https://engineer-ninaritai.com/">InfraAcademyへ</a></p>
         </div>
         <div class="text">
@@ -166,13 +88,7 @@
 
     </div>
     </main>
-
-    <footer>
-        <p class="copyright">Copyright©2024 d-coreer天王寺オフィス</p>
-
-    </footer>
-
-
-    
+        <!--フッター埋め込み-->
+        <?php require_once(__DIR__ .  "../../common/footer.php") ?>
 </body>
 </html>
