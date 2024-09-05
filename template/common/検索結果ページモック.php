@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>検索結果</title>
     <link rel="stylesheet" href="./css/style-common.css">
+    <link rel="stylesheet" href="./css/style-search.css">
 </head>
 <body>
     <?php include "header.html" ?>
@@ -30,7 +31,28 @@
                     <input type="text" size="25" placeholder=" キーワード検索">
                     <input type="submit" value="検索">
         </form>
-    <!--この辺に検索結果-->
+    
+        <div class="result">
+            <h2>○○の検索結果：××件</h2>
+            <!--この辺に検索して出た記事-->
+            <div class="toukou">
+                
+                <div class="article-status">
+                    <!--タイムスタンプ-->
+                    <div class="username" id="username">投稿者　ディーキャリア太郎</div>
+                    <div class="time-stamp" id="time-stamp">投稿日　2024年8月21日</div>
+                    <div class="article-category" id="article-category">カテゴリー名　フロントエンド</div>
+                    <div class="article-sub-category" id="article-sub-category">言語名　PHP</div>
+                </div>
+                <!--記事本文-->
+                <div class="honbun">この記事は仮置きです</div>
+                <div class="article-buttons">
+                    <div class="article-btn edit">編集</div>
+                    <div class="article-btn delete">削除</div>
+                    
+                </div>
+            </div>
+        </div>
     </div>
 
     
