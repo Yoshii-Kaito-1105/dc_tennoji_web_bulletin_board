@@ -41,8 +41,9 @@ html{
     position:sticky;
     top:0;  
     z-index:10;
-    position: relative;
+    
     overflow: visible;
+    opacity: 50%;
   }
 
   .header-left{
@@ -121,7 +122,8 @@ html{
     right: -40%;
     z-index: 80;
     background-color: #3584bb;
-    transition: all 0.5s;/*アニメーション設定*/
+
+    
   }
   .menu-content ul {
       padding: 70px 10px 0;
@@ -154,9 +156,16 @@ html{
   }
 
 
-  #menu-btn-check:checked ~ .menu-content {
-    right: 0%;/*メニューを画面内へ*/
+
+  .menu-content.open {
+    right: 0%;
+    transition: 0.5s;
   }
+
+  .menu-btn:hover {
+    background-color: #c4dfe6; /*ハンバーガーメニューにカーソルを当てると色が変わる*/
+  }
+
 
 
   .clear{
@@ -164,7 +173,7 @@ html{
   }
 
    /*メニュー欄*/
-   h3 {
+  h3 {
     white-space: pre;
     margin-left: 30px;
   }

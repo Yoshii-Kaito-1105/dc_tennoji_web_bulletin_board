@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>header</title>
-    <link rel="stylesheet" href="css/style-common.css">
+    <link rel="stylesheet" href="./css/style-common.css">
+    
 </head>
 <body>
  
@@ -24,7 +25,7 @@
             <details class="categories-link">
                 <summary>カテゴリー</summary>
                 <ul id="categories">
-                    <li> <a href="">分野</li>
+                    <li> <a href="">分野</a></li>
                     <details class="sub">
                         <summary>フロントエンド
                         </summary>
@@ -113,34 +114,39 @@
                     <li> <a href="">各スレッド</li>
                 </ul>
             </details>
-            
-            
-            
-            
+        </div>
+    
+    
+    
+    
+        <div class="hamburger-menu">
+            <input type="checkbox" id="menu-btn-check">
+            <label for="menu-btn-check" class="menu-btn">
+                <span></span>
+            </label>
+            <div class="menu-content">
+                <h2>月別記事メニュー</h2>
+                <ul>
+                    <li>
+                        <a href="">2024年9月分の記事</a>
+                    </li>
+                    <li>
+                        <a href="">2024年10月分の記事</a>
+                    </li>
+                    <li>
+                        <a href="">2024年11月分の記事</a>
+                    </li>
 
+                </ul>
+            </div>
         </div>
     </div>
-    
-    
-    
-    <div class="hamburger-menu">
-        <input type="checkbox" id="menu-btn-check">
-        <label for="menu-btn-check" class="menu-btn"><span></span></label>
-        <div class="menu-content">
-            <h2>月別記事メニュー</h2>
-            <ul>
-                <li>
-                    <a href="">2024年9月分の記事</a>
-                </li>
-                <li>
-                    <a href="">2024年10月分の記事</a>
-                </li>
-                <li>
-                    <a href="">2024年11月分の記事</a>
-                </li>
 
-            </ul>
-        </div>
-    </div>
+    <script>
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            document.querySelector('.menu-content').classList.toggle('open');
+        });
+        
+    </script>
 </body>
 </html>
