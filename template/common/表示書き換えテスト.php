@@ -3,15 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>検索結果</title>
-    <link rel="stylesheet" href="./css/style-common.css">
-    <link rel="stylesheet" href="./css/style-search.css">
+    <title>表示書き換えテスト</title>
 </head>
 <body>
-    <?php include "header.html" ?>
-
-    
-    <div class="container">
+<div class="container">
         <!--検索バー-->
         <form method="get" action="#" class="search_container">
         カテゴリー：<select name="mainCategory" id="mainCategory">
@@ -43,29 +38,9 @@
             </h2>
 
             <!--この辺に検索して出た記事-->
-            <div class="toukou">
-                
-                <div class="article-status">
-                    <!--タイムスタンプ-->
-                    <div class="username" id="username">投稿者　ディーキャリア太郎</div>
-                    <div class="time-stamp" id="time-stamp">投稿日　2024年8月21日</div>
-                    <div class="article-category" id="article-category">カテゴリー名　フロントエンド</div>
-                    <div class="article-sub-category" id="article-sub-category">言語名　PHP</div>
-                </div>
-                <!--記事本文-->
-                <div class="honbun">この記事は仮置きです</div>
-                <div class="article-buttons">
-                    <div class="article-btn edit">編集</div>
-                    <div class="article-btn delete">削除</div>
-                    
-                </div>
-            </div>
+            
         </div>
     </div>
-
-    
-    <?php include "footer.html" ?>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         

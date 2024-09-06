@@ -1,4 +1,4 @@
-html{
+  html{
     scroll-behavior: smooth;
   }
 
@@ -327,6 +327,13 @@ html{
     background-color:rgba(56, 95, 185, 0.875);
     height:120px;
     width: 100%;
+  }
+
+  .copyright{
+    padding-top: 20px;
+    font-size: 24px;
+    color:white;
+    text-align: center;
   }
 
     /*スマホ表示用*/
