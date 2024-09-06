@@ -8,7 +8,7 @@
 <body>
 <div class="container">
         <!--検索バー-->
-        <form method="get" action="#" class="search_container">
+        <form method="get" class="search_container">
         カテゴリー：<select name="mainCategory" id="mainCategory">
                         <option value="">選択してください</option>
                         <option value="frontend">フロントエンド</option>
@@ -23,18 +23,53 @@
                         
                         
                     </select>
-                    <input type="text" size="25" placeholder=" キーワード検索">
+                    <input type="text" size="25" id="keyWord" placeholder=" キーワード検索">
                     <input type="submit" value="検索">
         </form>
     
         <div class="result">
-            <h2>
-            <?php    
+        <?php    
             
             $text='○○の検索結果：××件';
-            $replace =str_replace('○○','検索ワード',$text);
-            print($replace);
+            $mainCategory = filter_input(INPUT_POST,"mainCategory") ; // メインカテゴリ
+            $subCategory = filter_input(INPUT_POST,"subCategory"); // サブカテゴリ
+            $keyWord = filter_input(INPUT_POST,"keyWord"); // 投稿内容
+            if($mainCategory==""){
+                if (isset($keyWord)==true){
+                    //検索なし
+                }
+                else{
+                    //キーワードのみで検索
+                    $replace =str_replace('○○',$keyWord,$text);
+                }
+            }
+            else{
+                if($subCategory==''){
+                    if (isset($keyWord)==true){
+                        //メインのみで検索
+                        $replace =str_replace('○○',"{$mainCategory}",$text);
+                    }
+                    else{
+                        //メインとキーワードで検索
+                        $replace =str_replace('○○',"メインカテゴリー：{$mainCategory}の{$keyWord}",$text);
+                    }
+                }
+                else{
+                    if (isset($keyWord)==true){
+                        //メインとサブで検索
+                        $replace =str_replace('○○',"メインカテゴリー：{$mainCategory},サブカテゴリー:{$subCategory}",$text);
+                    }
+                    else{
+                        //メインとサブとキーワードで検索
+                        $replace =str_replace('○○',"メインカテゴリー：{$mainCategory},サブカテゴリー:{$subCategory}の{$keyWord}",$text);
+                    }
+                }
+            }
+            
+            
             ?>
+            <h2>
+            <?php echo $replace; ?>
             </h2>
 
             <!--この辺に検索して出た記事-->
