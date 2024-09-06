@@ -236,7 +236,8 @@ h3 {
 
 /* 全体の中央寄せ */
 #article-img {
-  text-align: center;
+ width: 600px;
+ margin: 0 auto;
 }
 
 /* 未経験者案内 */
@@ -248,6 +249,7 @@ h3 {
   border-bottom: 5px solid #f9a603;
 }
 
+
 /* フロントエンド */
 #article-img h3 {
   font-size: 24px;
@@ -257,7 +259,8 @@ h3 {
 
 /* 説明文 */
 #article-img p {
-  white-space: pre;
+  white-space: pre-line;
+  
 }
 
 
