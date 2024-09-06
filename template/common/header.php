@@ -30,7 +30,7 @@
                         <summary>各項目</summary>
                         <ul id="categories">
                             各言語
-                            <li href="">HTML</li>
+                            <a href="/dc_tennoji_web_bulletin_board/template/contents/frontend/html-content.php"><li>HTML</li></a>
                             <li href="">CSS</li>
                             <li href="">JavaScript</li>
                         </ul>
