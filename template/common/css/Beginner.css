@@ -282,6 +282,170 @@ h3 {
   white-space: pre;
 }
 
+/* システム */
+.sisutemu {
+  width: 600px;
+  margin: 80px auto;
+}
+
+
+.sisutemu h3 {
+  font-size: 24px;
+  color: #0f5400df;
+}
+
+.sisutemu p {
+  white-space: pre-line;
+}
+
+.sisutemu img {
+  margin-bottom: 50px;
+}
+
+/* プログラマー */
+.purogurama- {
+  width: 600px;
+  margin: 80px auto;
+}
+
+.purogurama- h3 {
+  font-size: 24px;
+  color: #2379a1df;
+}
+
+.purogurama- p {
+  white-space: pre-line;
+}
+
+.purogurama- img {
+  margin-bottom: 50px;
+}
+
+/* アプリ */
+
+.apuri {
+  width: 600px;
+  margin: 80px auto;
+}
+
+.apuri h3 {
+  font-size: 24px;
+  color: #890775df;
+}
+
+.apuri p {
+  white-space: pre-line;
+}
+
+.apuri img {
+  margin-bottom: 50px;
+}
+
+/* 組み込みエンジニア */
+.kumikomi {
+  width: 600px;
+  margin: 80px auto;
+}
+
+.kumikomi h3 {
+  font-size: 24px;
+  color: #ffac06df;
+}
+
+.kumikomi p {
+  white-space: pre-line;
+}
+
+.kumikomi img {
+  margin-bottom: 50px;
+}
+
+/* ネットワーク */
+.nekko {
+  width: 600px;
+  margin: 80px auto;
+}
+
+.nekko h3 {
+  font-size: 24px;
+  color: #7d9cffdf;
+}
+
+.nekko p {
+  white-space: pre-line;
+}
+
+.nekko img {
+  margin-bottom: 50px;
+}
+
+/* データベース */
+.deta {
+  width: 600px;
+  margin: 80px auto;
+}
+
+.deta h3 {
+  font-size: 24px;
+  color: #29abf6df;
+}
+.deta p {
+  white-space: pre-line;
+}
+
+.deta img {
+  margin-bottom: 50px;
+}
+
+/* 社内SE */
+.IT {
+  width: 600px;
+  margin: 80px auto;
+}
+.IT h3 {
+  font-size: 24px;
+  color: #a31225df;
+}
+.IT p {
+  white-space: pre-line;
+}
+.IT img {
+  margin-bottom: 50px;
+}
+
+/* セールス */
+.se-rusu {
+  width: 600px;
+  margin: 80px auto;
+}
+.se-rusu h3 {
+  font-size: 24px;
+  color: #0f134adf;
+}
+.se-rusu p {
+  white-space: pre-line;
+}
+.se-rusu img {
+  margin-bottom: 50px;
+}
+
+/* セキュリティ */
+.security {
+  width: 600px;
+  margin: 80px auto;
+}
+.security h3 {
+  font-size: 24px;
+  color: #8024c6df;
+}
+.security p {
+  white-space: pre-line;
+}
+.security img {
+  margin-bottom: 50px;
+}
+
+
 /* インフラ　中央寄せ */
 .inhura {
   text-align: center;
