@@ -25,7 +25,7 @@
         </div>
         <div id="main-content">
             <h2>学習サイト紹介</h2>
-            <img src="/dc_tennoji_web_bulletin_board/image/プロゲートpng.png" alt="">
+            <img src="../../image/プロゲートpng.png" alt="">
             <p><a href="https://prog-8.com/">Progateへ</a></p>
         </div>
         <div class="text">
@@ -35,7 +35,7 @@
         </div>
 
         <div class="sub-content">
-            <img src="/dc_tennoji_web_bulletin_board/image/ドットインストール.png" alt="">
+            <img src="../../image/ドットインストール.png" alt="">
             <p><a href="https://dotinstall.com/">ドットインストールへ</a></p>
         </div>
         <div class="text">
@@ -44,7 +44,7 @@
         </div>
 
         <div class="sub-section">
-            <img src="/dc_tennoji_web_bulletin_board/image/ラーニング.png" alt="">
+            <img src="../../image/ラーニング.png" alt="">
             <p><a href="https://paiza.jp/works">paizaラーニングへ</a></p>
         </div>
         <div class="text">
@@ -54,7 +54,7 @@
         </div>
 
         <div class="section">
-            <img src="/dc_tennoji_web_bulletin_board/image/Schoo.png" alt="">
+            <img src="../../image/Schoo.png" alt="">
             <p><a href="https://schoo.jp/">Schooへ</a></p>
         </div>
         <div class="text">
@@ -63,7 +63,7 @@
         </div>
 
         <div class="section2">
-            <img src="/dc_tennoji_web_bulletin_board/image/シラバス.png" alt="">
+            <img src="../../image/シラバス.png" alt="">
             <p><a href="https://cyllabus.jp/">シラバスへ</a></p>
         </div>
         <div class="text">
@@ -72,7 +72,7 @@
         </div>
 
         <div class="section3">
-            <img src="/dc_tennoji_web_bulletin_board/image/インフラ系学習.png" alt="">
+            <img src="../../image/インフラ系学習.png" alt="">
             <p><a href="https://engineer-ninaritai.com/">InfraAcademyへ</a></p>
         </div>
         <div class="text">

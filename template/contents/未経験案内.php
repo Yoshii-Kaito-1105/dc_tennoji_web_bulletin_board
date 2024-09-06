@@ -55,7 +55,7 @@
             <div id="article-img">
                 <h2>未経験者案内</h2>
                 <h3>フロントエンドとは？</h3>
-                <img src="\dc_tennoji_web_bulletin_board\image\フロントエンド画像.png" alt="">
+                <img src="../../image/フロントエンド画像.png" alt="">
                 <h4>必要な知識/スキル</h4>
                 <ul>
                     <li>HTML、CSS、JavaScriptなどのスキル</li>
@@ -73,7 +73,7 @@
 
             <div class="backend">
                 <h3>バックエンドとは？</h3>
-                <img src="\dc_tennoji_web_bulletin_board\image\バックエンド画像.png" alt="">
+                <img src="../../image/バックエンド画像.png" alt="">
                 <h4>必要な知識/スキル</h4>
                 <ul>
                     <li>プログラミングスキル</li>
@@ -95,7 +95,7 @@
 
             <div class="sisutemu">
                 <h3>システムエンジニアとは？</h3>
-                <img src="\dc_tennoji_web_bulletin_board\image\システムエンジニア.png"alt="">
+                <img src="../../image/システムエンジニア.png"alt="">
                 <ul>
                     <li>プログラミング言語・スキル</li>
                     <li>サーバーやネットワークの知識</li>
@@ -113,7 +113,7 @@
                 <h3>社内SEとは？
                     （システムエンジニア）
                 </h3>
-                <img src="\dc_tennoji_web_bulletin_board\image\社内SE.png" alt="">
+                <img src="../../image/社内SE.png" alt="">
                 <ul>
                     <li>予算管理スキル</li>
                     <li>プロジェクトマネジメントスキル</li>
@@ -129,7 +129,7 @@
 
             <div class="purogurama-">
                 <h3>プログラマーとは？</h3>
-                <img src="\dc_tennoji_web_bulletin_board\image\プログラマー.png" alt="">
+                <img src="../../image/プログラマー.png" alt="">
                 <ul>
                     <li>プログラミング言語・スキル</li>
                     <li>フレームワーク</li>
@@ -144,7 +144,7 @@
 
             <div class="apuri">
                 <h3>アプリケーションエンジニアとは？</h3>
-                <img src="\dc_tennoji_web_bulletin_board\image\アプリ.png" alt="">
+                <img src="../../image/アプリ.png" alt="">
                 <ul>
                     <li>システム開発に関するスキル</li>
                     <li>ネットワークやデータベースの知識</li>
@@ -159,7 +159,7 @@
               
             <div class="kumikomi">
                 <h3>組込みエンジニアとは？</h3>
-                <img src="\dc_tennoji_web_bulletin_board\image\組込みエンジニア.png" alt="">
+                <img src="../../image/組込みエンジニア.png" alt="">
                 <ul>
                     <li>アセンプリ言語</li>
                     <li>OSの知識</li>
@@ -176,7 +176,7 @@
 
             <div class="se-rusu">
                 <h3>セールスエンジニアとは？</h3>
-                <img src="\dc_tennoji_web_bulletin_board\image\セールスエンジニア.png" alt="">
+                <img src="../../image/セールスエンジニア.png" alt="">
                 <ul>
                     <li>基本的なITスキル</li>
                     <li>コミュニケーション能力</li>
@@ -194,7 +194,7 @@
 
             <div class="inhura">
                 <h3>インフラエンジニアとは？</h3>
-                <img src="\dc_tennoji_web_bulletin_board\image\インフラ画像.png"alt="">
+                <img src="../../image/インフラ画像.png"alt="">
                 <h4>必要な知識/スキル</h4>
                 <ul>
                     <li>ネットワーク技術に関する豊富な知識</li>
@@ -212,7 +212,7 @@
 
             <div class="nekko">
                 <h3>ネットワークエンジニアとは？</h3>
-                <img src="\dc_tennoji_web_bulletin_board\image\ネットワークエンジニア.png" alt="">
+                <img src="../../image/ネットワークエンジニア.png" alt="">
                 <ul>
                     <li>ネットワーク技術に関する豊富な知識</li>
                     <li>課題やエラーを論理的に解決する能力</li>
@@ -226,7 +226,7 @@
 
             <div class="security">
                 <h3>セキュリティエンジニアとは？</h3>
-                <img src="\dc_tennoji_web_bulletin_board\image\セキュリティエンジニア.png" alt="">
+                <img src="../../image/セキュリティエンジニア.png" alt="">
                 <ul>
                     <li>基礎的なIT技術系のスキルと知識</li>
                     <li>経営に関する知識</li>
@@ -245,7 +245,7 @@
 
             <div class="deta">
                 <h3>データベースエンジニアとは？</h3>
-                <img src="\dc_tennoji_web_bulletin_board\image\データベースエンジニア.png" alt="">
+                <img src="../../image/データベースエンジニア.png" alt="">
                 <ul>
                     <li>データベースに関する知識</li>
                     <li>企業のIT戦略と方針に関する理解</li>
