@@ -32,7 +32,7 @@
                             各言語
                             <a href="/dc_tennoji_web_bulletin_board/template/contents/frontend/html-content.php"><li>HTML</li></a>
                             <li href="">CSS</li>
-                            <li href="">JavaScript</li>
+                            <a href="/dc_tennoji_web_bulletin_board/template/contents/frontend/js-content.php"><li>JavaScript</li></a>
                         </ul>
                     </details>
 
