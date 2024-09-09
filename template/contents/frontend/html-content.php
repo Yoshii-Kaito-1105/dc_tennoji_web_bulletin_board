@@ -66,9 +66,9 @@
                     </p>
                     <p class="article-category" id="article-category">カテゴリー名: {$majorCategory} </p>
                     <p class="article-category" id="article-category">サブカテゴリー名:{$minorCategory}  </p>
+                    <!--記事本文-->
+                    <p class="contents">本文: {$content}</p>
                 </div>
-                <!--記事本文-->
-                <p class="contents">本文: {$content}</p>
                     <div class="article-buttons">
                         <button type="submit" class="article-btn edit">編集</button>
                         <button type="submit" class="article-btn delete">削除</button>
