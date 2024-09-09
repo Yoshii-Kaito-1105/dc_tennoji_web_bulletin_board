@@ -24,47 +24,92 @@
                         
                     </select>
                     <input type="text" size="25" id="keyWord" placeholder=" キーワード検索">
-                    <input type="submit" value="検索">
+                    <input type="submit" value="検索"　name="search">
         </form>
     
         <div class="result">
         <?php    
             
             $text='○○の検索結果：××件';
-            $mainCategory = filter_input(INPUT_POST,"mainCategory") ; // メインカテゴリ
-            $subCategory = filter_input(INPUT_POST,"subCategory"); // サブカテゴリ
-            $keyWord = filter_input(INPUT_POST,"keyWord"); // 投稿内容
-            if($mainCategory==""){
-                if (isset($keyWord)==true){
-                    //検索なし
+            $replace=$text;
+            $mainSearchCategory = filter_input(INPUT_POST,"mainCategory") ; // 検索画面のメインカテゴリ
+            $subSearchCategory = filter_input(INPUT_POST,"subCategory"); // 検索画面のサブカテゴリ
+            $keyWord = filter_input(INPUT_POST,"keyWord"); // 検索画面の投稿内容
+            $searchSwitch=0;//検索フラグ用の関数
+            function NumberofSearches($searchSwitch){
+                //検索して出た数に応じてカウントアップ
+                switch($searchSwitch){
+                case 0:
+                    $counts = 0;
+                break;
+                case 1;
+                    //キーワード一致
+                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM articles');
+                break;
+                case 2:
+                    //メイン一致
+                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM items');
+                break;
+                case 3:
+                    //メインとキーワード一致
+                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM items');
+                break;
+                case 4:
+                    //メインとサブ一致
+                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM items');
+                break;
+                case 5:
+                    //メイン・サブ・キーワード一致
+                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM items');
+                break;
+                
                 }
-                else{
-                    //キーワードのみで検索
-                    $replace =str_replace('○○',$keyWord,$text);
-                }
+                //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM items');
+                //$count = $counts->fetch();
+                //echo ($count['cnt']);
             }
-            else{
-                if($subCategory==''){
+            if(isset($_POST['search'])){
+                if($mainSearchCategory==""){
                     if (isset($keyWord)==true){
-                        //メインのみで検索
-                        $replace =str_replace('○○',"{$mainCategory}",$text);
+                        //検索なし
+                        NumberofSearches(0);
                     }
                     else{
-                        //メインとキーワードで検索
-                        $replace =str_replace('○○',"メインカテゴリー：{$mainCategory}の{$keyWord}",$text);
+                        //キーワードのみで検索
+                        NumberofSearches(1);
+                        //データベースが出来次第検索結果の部分にcountを入れる
+                        $replace =str_replace('○○の検索結果：××件',"{$keyWord}の検索結果:0件",$text);
+                        
                     }
                 }
                 else{
-                    if (isset($keyWord)==true){
-                        //メインとサブで検索
-                        $replace =str_replace('○○',"メインカテゴリー：{$mainCategory},サブカテゴリー:{$subCategory}",$text);
+                    if($subSearchCategory==''){
+                        if (isset($keyWord)==true){
+                            //メインのみで検索
+                            NumberofSearches(2);
+                            $replace =str_replace('○○の検索結果：××件',"{$mainSearchCategory}の検索結果:0件",$text);
+                        }
+                        else{
+                            //メインとキーワードで検索
+                            NumberofSearches(3);
+                            $replace =str_replace('○○の検索結果：××件',"メインカテゴリー：{$mainSearchCategory}の{$keyWord}の検索結果:0件",$text);
+                        }
                     }
                     else{
-                        //メインとサブとキーワードで検索
-                        $replace =str_replace('○○',"メインカテゴリー：{$mainCategory},サブカテゴリー:{$subCategory}の{$keyWord}",$text);
+                        if (isset($keyWord)==true){
+                            //メインとサブで検索
+                            NumberofSearches(4);
+                            $replace =str_replace('○○の検索結果：××件',"メインカテゴリー：{$mainSearchCategory},サブカテゴリー:{$subSearchCategory}の検索結果:0件",$text);
+                        }
+                        else{
+                            //メインとサブとキーワードで検索
+                            NumberofSearches(5);
+                            $replace =str_replace('○○の検索結果：××件',"メインカテゴリー：{$mainSearchCategory},サブカテゴリー:{$subSearchCategory}の{$keyWord}の検索結果:0件",$text);
+                        }
                     }
                 }
             }
+            
             
             
             ?>
@@ -73,7 +118,10 @@
             </h2>
 
             <!--この辺に検索して出た記事-->
+            <?php 
             
+            
+            ?>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
