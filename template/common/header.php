@@ -41,8 +41,12 @@
                         <summary>各項目</summary>
                         <ul id="categories">
                             各言語
-                            <li href="">Python</li>
-                            <li href="">Java</li>
+                            <a href="#"><li>Python</li></a>
+                            <a href="#"><li>Ruby</li></a>
+                            <a href="#"><li>Java</li></a>
+                            <a href="#"><li>PHP</li></a>
+                            <a href="#"><li>Ruby</li></a>
+                            <a href="/dc_tennoji_web_bulletin_board/template/contents/backend/backend-js-content.php"><li>JavaScript</li></a>
                         </ul>
                     </details>
                     <a href="/dc_tennoji_web_bulletin_board/template/contents/infra/infra-content.php"><li>インフラ</li></a>
