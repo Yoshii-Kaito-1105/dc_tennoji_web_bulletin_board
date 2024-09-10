@@ -42,7 +42,7 @@
                         <ul id="categories">
                             各言語
                             <a href="/dc_tennoji_web_bulletin_board/template/contents/backend/py-content.php"><li>Python</li></a>
-                            <a href="#"><li>Java</li></a>
+                            <a href="/dc_tennoji_web_bulletin_board/template/contents/backend/java-content.php"><li>Java</li></a>
                             <a href="#"><li>Ruby</li></a>
                             <a href="#"><li>PHP</li></a>
                             <a href="#"><li>Ruby</li></a>
