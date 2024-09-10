@@ -1,3 +1,37 @@
+<?php
+            
+            // 投稿日と更新日を日本時間に適用する
+            date_default_timezone_set('Asia/Tokyo');
+            // 別階層にあるDBコネクタの読み込み
+            require_once(__DIR__ . "/../../dba/pgConnection.php"); 
+            $dbh = connectToDb();
+
+                        // データベースからレコードを全て取得する
+            $sql = 
+            "select 
+                u.name as user_name,
+                a.created_at,
+                mjrc.name as major_category_name,
+                minc.name as minor_category_name,
+                a.content
+            from 
+                articles a
+            inner join 
+                users u
+            on a.user_id = u.user_id
+            inner join
+                major_categories mjrc
+            on a.major_category_id = mjrc.major_category_id
+            inner join 
+                minor_categories minc
+            on a.minor_category_id = minc.minor_category_id
+            ";
+        $stmt = $dbh->query($sql);
+        $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // 記事テーブルにあるレコード数を取得する
+        $recodeCount = $stmt->rowCount(); 
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -29,54 +63,59 @@
     
         <div class="result">
         <?php    
-            
+
+
+
             $text='○○の検索結果：××件';
             $replace=$text;
             $mainSearchCategory = filter_input(INPUT_POST,"mainCategory") ; // 検索画面のメインカテゴリ
             $subSearchCategory = filter_input(INPUT_POST,"subCategory"); // 検索画面のサブカテゴリ
             $keyWord = filter_input(INPUT_POST,"keyWord"); // 検索画面の投稿内容
+            $keyWordWithWildcard = "%" . $keyWord . "%";// 部分一致のためにワイルドカードを追加
             $searchSwitch=0;//検索フラグ用の関数
-            function NumberofSearches($searchSwitch){
-                //検索して出た数に応じてカウントアップ
+            function searchBranch($searchSwitch){
+                
                 switch($searchSwitch){
                 case 0:
-                    $counts = 0;
+                    
                 break;
                 case 1;
-                    //キーワード一致
-                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM articles');
+                    //キーワード部分一致（以降キーワードはすべて部分一致とする）
+                    //$counts = $dbh->query("SELECT COUNT(article_id) as cnt FROM articles Where content LIKE :keyword");
                 break;
                 case 2:
                     //メイン一致
-                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM items');
+                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM articles');
                 break;
                 case 3:
                     //メインとキーワード一致
-                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM items');
+                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM articles');
                 break;
                 case 4:
                     //メインとサブ一致
-                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM items');
+                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM articles');
                 break;
                 case 5:
                     //メイン・サブ・キーワード一致
-                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM items');
+                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM articles');
                 break;
                 
                 }
-                //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM items');
+                //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM articles');
                 //$count = $counts->fetch();
                 //echo ($count['cnt']);
             }
-            if(isset($_POST['search'])){
+            if(empty($_POST['search'])){
+                
                 if($mainSearchCategory==""){
-                    if (isset($keyWord)==true){
+                    //メイン未選択の場合
+                    if (empty($keyWord)==true){
                         //検索なし
-                        NumberofSearches(0);
+                        searchBranch(0);
                     }
                     else{
                         //キーワードのみで検索
-                        NumberofSearches(1);
+                        searchBranch(1);
                         //データベースが出来次第検索結果の部分にcountを入れる
                         $replace =str_replace('○○の検索結果：××件',"{$keyWord}の検索結果:0件",$text);
                         
@@ -84,26 +123,27 @@
                 }
                 else{
                     if($subSearchCategory==''){
-                        if (isset($keyWord)==true){
+                        //サブ未選択の場合
+                        if (empty($keyWord)==true){
                             //メインのみで検索
-                            NumberofSearches(2);
+                            searchBranch(2);
                             $replace =str_replace('○○の検索結果：××件',"{$mainSearchCategory}の検索結果:0件",$text);
                         }
                         else{
                             //メインとキーワードで検索
-                            NumberofSearches(3);
+                            searchBranch(3);
                             $replace =str_replace('○○の検索結果：××件',"メインカテゴリー：{$mainSearchCategory}の{$keyWord}の検索結果:0件",$text);
                         }
                     }
                     else{
-                        if (isset($keyWord)==true){
+                        if (empty($keyWord)==true){
                             //メインとサブで検索
-                            NumberofSearches(4);
+                            searchBranch(4);
                             $replace =str_replace('○○の検索結果：××件',"メインカテゴリー：{$mainSearchCategory},サブカテゴリー:{$subSearchCategory}の検索結果:0件",$text);
                         }
                         else{
                             //メインとサブとキーワードで検索
-                            NumberofSearches(5);
+                            searchBranch(5);
                             $replace =str_replace('○○の検索結果：××件',"メインカテゴリー：{$mainSearchCategory},サブカテゴリー:{$subSearchCategory}の{$keyWord}の検索結果:0件",$text);
                         }
                     }
@@ -117,11 +157,37 @@
             <?php echo $replace; ?>
             </h2>
 
-            <!--この辺に検索して出た記事-->
-            <?php 
-            
-            
-            ?>
+            <?php foreach ($articles as $article) {
+            $userName = $article['user_name'];
+            $createdAt = date('Y年m月d日', strtotime($article['created_at']));
+            $majorCategory = $article['major_category_name'];
+            $minorCategory = $article['minor_category_name'];
+            $content = htmlspecialchars($article['content'], ENT_QUOTES, 'UTF-8');
+            // 取得結果を画面に表示する  
+            echo <<<EOT
+            <!--このあたりに記事-->
+            <div class="toukou">
+                <div class="article-status">
+                    <p class="username" id="username">投稿者 
+                        {$userName}
+                    </p>
+                    <p class="time-stamp" id="time-stamp">投稿日
+                        {$createdAt}
+                    </p>
+                    <p class="article-category" id="article-category">カテゴリー名: {$majorCategory} </p>
+                    <p class="article-category" id="article-category">サブカテゴリー名:{$minorCategory}  </p>
+                </div>
+                <!--記事本文-->
+                <p class="contents">本文: {$content}</p>
+                    <div class="article-buttons">
+                        <button type="submit" class="article-btn edit">編集</button>
+                        <button type="submit" class="article-btn delete">削除</button>
+                    </div>
+            </div>
+            EOT;
+        }
+    ?>
+
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -129,7 +195,7 @@
         
 
         // #subCategoryの中身を準備
-        var items = {
+        var articles = {
             frontend:[
                 ['選択してください', ''],
                 ['HTML', 'HTML'],
@@ -165,7 +231,7 @@
         $('#mainCategory').on('change', function(){
             var cont = $(this).val(); // 選択された項目のvalueを取得
             if(cont){ // valueに何か値が入っていた場合
-                var item = items[cont]; // リストからカテゴリに登録されたサブカテゴリの配列を取得
+                var item = articles[cont]; // リストからカテゴリに登録されたサブカテゴリの配列を取得
                 $("#subCategory").attr("disabled", false); // #subCategoryを選択可能に
                 $('#subCategory').html('');
                 var option;
@@ -182,5 +248,7 @@
 
 
     </script>
+        <!-- DBの接続を切る -->
+        <?php $dbh = disconnectDb(); ?>
 </body>
 </html>
