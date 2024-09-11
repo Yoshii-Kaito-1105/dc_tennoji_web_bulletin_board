@@ -261,7 +261,7 @@
 
             <div class="game">
                 <h3>ゲームエンジニアとは？</h3>
-                <img src="\dc_tennoji_web_bulletin_board\image\ゲーム画像.png" alt="">
+                <img src="../../image/ゲーム画像.png" alt="">
                 <h4>必要な知識/スキル</h4>
                 <ul>
                     <li>プログラミングスキル</li>
