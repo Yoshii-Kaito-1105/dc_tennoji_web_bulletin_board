@@ -55,7 +55,7 @@
                             各言語
                             <a href="/dc_tennoji_web_bulletin_board/template/contents/infra/infra-py-content.php"><li>Python</li></a>
                             <a href="/dc_tennoji_web_bulletin_board/template/contents/infra/infra-rb-content.php"><li>Ruby</li></a>
-                            <li href="">Java</li>
+                            <a href="/dc_tennoji_web_bulletin_board/template/contents/infra/infra-java-content.php"><li>Java</li></a>
                         </ul>
                     </details>
                     <a href="/dc_tennoji_web_bulletin_board/template/contents/games/game-content.php"><li>ゲーム</li></a>
