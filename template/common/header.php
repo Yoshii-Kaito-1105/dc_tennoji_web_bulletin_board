@@ -53,7 +53,7 @@
                         <summary>各項目</summary>
                         <ul id="categories">
                             各言語
-                            <li href="">Python</li>
+                            <a href="/dc_tennoji_web_bulletin_board/template/contents/infra/infra-py-content.php"><li>Python</li></a>
                             <li href="">Ruby</li>
                             <li href="">Java</li>
                         </ul>
