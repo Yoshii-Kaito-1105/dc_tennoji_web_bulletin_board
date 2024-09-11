@@ -54,7 +54,7 @@
                         <ul id="categories">
                             各言語
                             <a href="/dc_tennoji_web_bulletin_board/template/contents/infra/infra-py-content.php"><li>Python</li></a>
-                            <li href="">Ruby</li>
+                            <a href="/dc_tennoji_web_bulletin_board/template/contents/infra/infra-rb-content.php"><li>Ruby</li></a>
                             <li href="">Java</li>
                         </ul>
                     </details>
