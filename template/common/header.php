@@ -65,7 +65,8 @@
                                 各言語
                                 <a href="/dc_tennoji_web_bulletin_board/template/contents/games/cs-content.php"><li>C#</li></a>
                                 <a href="/dc_tennoji_web_bulletin_board/template/contents/games/cpp-content.php"><li>C++</li></a>
-                                <li href="">Swift</li>
+                                <a href="/dc_tennoji_web_bulletin_board/template/contents/games/swift-content.php"><li>Swift</li></a>
+                                <a href="/dc_tennoji_web_bulletin_board/template/contents/games/game-java-content.php"><li>Java</li></a>
                             </ul>
                     </details>
                     <a href="/dc_tennoji_web_bulletin_board/template/contents/code/codeTechnic.php"><li>効率的なコードの書き方</li></a>
@@ -76,6 +77,7 @@
                                 <li href="">C#</li>
                                 <li href="">C++</li>
                                 <li href="">Swift</li>
+                                li
                             </ul>
                     </details>
                 </ul>

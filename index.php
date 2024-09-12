@@ -118,7 +118,8 @@
                 ['選択してください', ''],
                 ['C++', 'cpp'],
                 ['C#', 'cs'],
-                ['Swift', 'swift']
+                ['Swift', 'swift'],
+                ['Java', 'java']
             ],
             code:[
                 ['未分類', 'uncategorized']
