@@ -1,4 +1,10 @@
-
+<?php 
+            // 投稿日と更新日を日本時間に適用する
+            date_default_timezone_set('Asia/Tokyo');
+            // 別階層にあるDBコネクタの読み込み
+            require_once(__DIR__ . "/../../dba/pgConnection.php"); 
+            $dbh=null;
+?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -31,10 +37,9 @@
     
         <div class="result">
         <?php    
-            // 投稿日と更新日を日本時間に適用する
-            date_default_timezone_set('Asia/Tokyo');
-            // 別階層にあるDBコネクタの読み込み
-            require_once(__DIR__ . "/../../dba/pgConnection.php"); 
+            global $dbh;
+            $dbh = connectToDb();
+
             
             //データベース接続確認
             //if ($dbh === null) {
@@ -63,7 +68,7 @@
                              minor_categories minc
                          on a.minor_category_id = minc.minor_category_id
                          ";
-            $dbh = connectToDb();
+            
             $stmt = $dbh->query($sql);
             $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -79,6 +84,8 @@
             $searchSwitch=0;//検索フラグ用の変数
             
             function searchBranch($dbh, $searchSwitch, $mainSearchCategory, $subSearchCategory, $keyWord) {
+                global $dbh;
+                $dbh = connectToDb();
                 $articles = []; // 結果を保存する配列
                 $sql = "SELECT * FROM articles "; // 基本のSQLクエリ
                 $conditions = []; // WHERE条件を保存する配列
@@ -193,7 +200,9 @@
             <?php echo $replace; ?>
             </h2>
 
-            <?php foreach ($articles as $article) {
+            <?php 
+            global $dbh;
+            foreach ($articles as $article) {
             $userName = $article['user_name'];
             $createdAt = date('Y年m月d日', strtotime($article['created_at']));
             $majorCategory = $article['major_category_name'];
@@ -232,31 +241,31 @@
 
         // #subCategoryの中身を準備
         var articles = {
-            frontend:[
+            1:[//フロントエンド
                 ['選択してください', ''],
                 ['HTML', '1'],
                 ['CSS', '2'],
                 ['JavaScript', '3']
             ],
-            backend:[
+            2:[//バックエンド
                 ['選択してください', ''],
                 ['Python', '4'],
                 ['PHP','5'],
                 ['Java', '6']
             ],
-            infrastructure:[
+            3:[//インフラ
                 ['選択してください', ''],
                 ['Python', '7'],
                 ['Ruby', '8'],
                 ['Java', '9']
             ],
-            game:[
+            4:[//ゲーム
                 ['選択してください', ''],
                 ['C++', '10'],
                 ['C#', '11'],
                 ['Swift', '12']
             ],
-            code:[
+            5:[//効率的なコードの書き方
                 ['未分類', '13']
             ]
         };
