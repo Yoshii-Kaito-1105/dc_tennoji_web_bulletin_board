@@ -63,7 +63,7 @@
                         <summary>各項目</summary>                        
                             <ul id="categories">
                                 各言語
-                                <li href="">C#</li>
+                                <a href="/dc_tennoji_web_bulletin_board/template/contents/games/cs-content.php"><li>C#</li></a>
                                 <li href="">C++</li>
                                 <li href="">Swift</li>
                             </ul>
