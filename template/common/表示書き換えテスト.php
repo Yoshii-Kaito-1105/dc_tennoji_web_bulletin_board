@@ -10,7 +10,7 @@
 <body>
 <div class="container">
         <!--検索バー-->
-        <form method="get" class="search_container">
+        <form method="post" class="search_container">
         カテゴリー：<select name="mainCategory" id="mainCategory">
                         <option value="">選択してください</option>
                         <option value="1">フロントエンド</option>
@@ -25,8 +25,8 @@
                         
                         
                     </select>
-                    <input type="text" size="25" id="keyWord" placeholder=" キーワード検索">
-                    <input type="submit" value="検索"　name="search">
+                    <input type="text" size="25" id="keyWord" name="keyWord" placeholder=" キーワード検索">
+                    <input type="submit" value="検索" name="search">
         </form>
     
         <div class="result">
@@ -35,7 +35,7 @@
             date_default_timezone_set('Asia/Tokyo');
             // 別階層にあるDBコネクタの読み込み
             require_once(__DIR__ . "/../../dba/pgConnection.php"); 
-            $dbh = connectToDb();
+            
             //データベース接続確認
             //if ($dbh === null) {
             //    echo 'データベース接続に失敗しました。';
@@ -44,25 +44,26 @@
             //}
             
                          // データベースからレコードを全て取得する
-            $sql = 
-             "select 
-                 u.name as user_name,
-                 a.created_at,
-                 mjrc.name as major_category_name,
-                 minc.name as minor_category_name,
-                 a.content
-             from 
-                 articles a
-             inner join 
-                 users u
-             on a.user_id = u.user_id
-             inner join
-                 major_categories mjrc
-             on a.major_category_id = mjrc.major_category_id
-             inner join 
-                 minor_categories minc
-             on a.minor_category_id = minc.minor_category_id
-             ";
+                         $sql = 
+                         "select 
+                             u.name as user_name,
+                             a.created_at,
+                             mjrc.name as major_category_name,
+                             minc.name as minor_category_name,
+                             a.content
+                         from 
+                             articles a
+                         inner join 
+                             users u
+                         on a.user_id = u.user_id
+                         inner join
+                             major_categories mjrc
+                         on a.major_category_id = mjrc.major_category_id
+                         inner join 
+                             minor_categories minc
+                         on a.minor_category_id = minc.minor_category_id
+                         ";
+            $dbh = connectToDb();
             $stmt = $dbh->query($sql);
             $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -73,100 +74,117 @@
             $subSearchCategory = filter_input(INPUT_POST,"subCategory",FILTER_VALIDATE_INT); // 検索画面のサブカテゴリ
 
             $keyWord = filter_input(INPUT_POST,"keyWord",FILTER_SANITIZE_STRING); // 検索画面の投稿内容
-            $keyWordWithWildcard = "%" . $keyWord . "%";// 部分一致のためにワイルドカードを追加
+            
 
             $searchSwitch=0;//検索フラグ用の変数
-            function searchBranch($searchSwitch){
-                global $dbh;
-                global $keyWordWithWildcard;
-                //searchSwitch内の数字で分岐
-                switch($searchSwitch){
-                case 0:
-                    
-                break;
-                case 1;
-                    //キーワード部分一致（以降キーワードはすべて部分一致とする）
-                    $counts = $dbh->query("SELECT COUNT(article_id) as cnt FROM articles Where content LIKE :keyword");
-                    //
-                break;
-                case 2:
-                    //メイン一致
-                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM articles where major_category ={$mainSearchCategory}');
-                break;
-                case 3:
-                    //メインとキーワード一致
-                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM articles');
-                break;
-                case 4:
-                    //メインとサブ一致
-                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM articles');
-                break;
-                case 5:
-                    //メイン・サブ・キーワード一致
-                    $query = "SELECT * FROM articles 
-                    WHERE main_category = :mainSearchCategory 
-                    AND sub_category = :subSearchCategory 
-                    AND keyword_column LIKE :keyWord";
-                    //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM articles');
-                break;
-                
+            
+            function searchBranch($dbh, $searchSwitch, $mainSearchCategory, $subSearchCategory, $keyWord) {
+                $articles = []; // 結果を保存する配列
+                $sql = "SELECT * FROM articles "; // 基本のSQLクエリ
+                $conditions = []; // WHERE条件を保存する配列
+                $params = []; // パラメータを保存する配列
+            
+                // 条件分岐でクエリを作成
+                switch($searchSwitch) {
+                    case 0:
+                        // 全件取得
+                        break;
+                    case 1:
+                        // キーワードのみで検索
+                        $conditions[] = "content LIKE :keyword";
+                        $params[':keyword'] = '%' . $keyWord . '%';//部分一致のためワイルドカードを追加
+                        break;
+                    case 2:
+                        // メインカテゴリーのみで検索
+                        $conditions[] = "major_category_id = :mainSearchCategory";
+                        $params[':mainSearchCategory'] = $mainSearchCategory;
+                        break;
+                    case 3:
+                        // メインカテゴリーとキーワードで検索
+                        $conditions[] = "major_category_id = :mainSearchCategory";
+                        $conditions[] = "content LIKE :keyword";
+                        $params[':mainSearchCategory'] = $mainSearchCategory;
+                        $params[':keyword'] = '%' . $keyWord . '%';
+                        break;
+                    case 4:
+                        // メインカテゴリーとサブカテゴリーで検索
+                        $conditions[] = "major_category_id = :mainSearchCategory";
+                        $conditions[] = "minor_category_id = :subSearchCategory";
+                        $params[':mainSearchCategory'] = $mainSearchCategory;
+                        $params[':subSearchCategory'] = $subSearchCategory;
+                        break;
+                    case 5:
+                        // メインカテゴリー、サブカテゴリー、キーワードで検索
+                        $conditions[] = "major_category_id = :mainSearchCategory";
+                        $conditions[] = "minor_category_id = :subSearchCategory";
+                        $conditions[] = "content LIKE :keyword";
+                        $params[':mainSearchCategory'] = $mainSearchCategory;
+                        $params[':subSearchCategory'] = $subSearchCategory;
+                        $params[':keyword'] = '%' . $keyWord . '%';
+                        break;
                 }
-                // クエリを実行
-                //$stmt = $pdo->prepare($query);
-                //$stmt->bindParam(':mainSearchCategory', $mainSearchCategory, PDO::PARAM_INT);
-                //$stmt->bindParam(':subSearchCategory', $subSearchCategory, PDO::PARAM_INT);
-                //$stmt->bindParam(':keyWord', $keyWordWithWildcard, PDO::PARAM_STR);
+            
+                // 条件がある場合はWHERE句を追加
+                if (count($conditions) > 0) {
+                    $sql .= " WHERE " . implode(" AND ", $conditions);
+                }
+            
+                // クエリを実行して記事を取得
+                $stmt = $dbh->prepare($sql);
+                $stmt->execute($params);
+                $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+                // 記事の件数を取得
+                $count = count($articles);
+            
+                // 結果としてレコードと件数を返す
+                return ['count' => $count, 'articles' => $articles];
+            }
+            
+                
 
-                //$stmt->execute();
-                //$counts = $dbh->query('SELECT COUNT(article_id) as cnt FROM articles');
-                //$count = $counts->fetch();
                 
                 
-            }
-            if(empty($_POST['search'])){
-                
-                if($mainSearchCategory==""){
-                    //メイン未選択の場合
-                    if (empty($keyWord)==true){
-                        //検索なし
-                        searchBranch(0);
+
+            if (isset($_POST['search'])) {
+                if ($mainSearchCategory == "") {
+                    // メイン未選択の場合
+                    if (empty($keyWord)) {
+                        // 検索なし（全件取得）
+                        $result = searchBranch($dbh, 0, null, null, null);
+                    } else {
+                        // キーワードのみで検索
+                        $result = searchBranch($dbh, 1, null, null, $keyWord);
                     }
-                    else{
-                        //キーワードのみで検索
-                        searchBranch(1);
-                        //データベースが出来次第検索結果の部分にcountを入れる
-                        $replace =str_replace('○○の検索結果：××件',"{$keyWord}の検索結果:0件",$text);
-                        
-                    }
-                }
-                else{
-                    if($subSearchCategory==''){
-                        //サブ未選択の場合
-                        if (empty($keyWord)==true){
-                            //メインのみで検索
-                            searchBranch(2);
-                            $replace =str_replace('○○の検索結果：××件',"{$mainSearchCategory}の検索結果:0件",$text);
+                } else {
+                    if ($subSearchCategory == '') {
+                        // サブ未選択の場合
+                        if (empty($keyWord)) {
+                            // メインのみで検索
+                            $result = searchBranch($dbh, 2, $mainSearchCategory, null, null);
+                        } else {
+                            // メインとキーワードで検索
+                            $result = searchBranch($dbh, 3, $mainSearchCategory, null, $keyWord);
                         }
-                        else{
-                            //メインとキーワードで検索
-                            searchBranch(3);
-                            $replace =str_replace('○○の検索結果：××件',"メインカテゴリー：{$mainSearchCategory}の{$keyWord}の検索結果:0件",$text);
-                        }
-                    }
-                    else{
-                        if (empty($keyWord)==true){
-                            //メインとサブで検索
-                            searchBranch(4);
-                            $replace =str_replace('○○の検索結果：××件',"メインカテゴリー：{$mainSearchCategory},サブカテゴリー:{$subSearchCategory}の検索結果:0件",$text);
-                        }
-                        else{
-                            //メインとサブとキーワードで検索
-                            searchBranch(5);
-                            $replace =str_replace('○○の検索結果：××件',"メインカテゴリー：{$mainSearchCategory},サブカテゴリー:{$subSearchCategory}の{$keyWord}の検索結果:0件",$text);
+                    } else {
+                        if (empty($keyWord)) {
+                            // メインとサブで検索
+                            $result = searchBranch($dbh, 4, $mainSearchCategory, $subSearchCategory, null);
+                        } else {
+                            // メインとサブとキーワードで検索
+                            $result = searchBranch($dbh, 5, $mainSearchCategory, $subSearchCategory, $keyWord);
                         }
                     }
                 }
+            
+                // 結果から件数と記事を取得
+                $count = $result['count'];
+                $articles = $result['articles'];
+            
+                // 件数を使ってメッセージを更新
+                $replace = str_replace('○○の検索結果：××件', "{$keyword}の検索結果:{$count}件", $text);
             }
+            
             
             
             
