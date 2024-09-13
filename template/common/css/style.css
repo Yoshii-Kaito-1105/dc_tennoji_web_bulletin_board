@@ -170,8 +170,13 @@
 
   .menu-link{
     padding-left: 0.5%;
+
     width:16%;
     
+  }
+
+summary {
+    padding-left: 30px;
   }
 
   h3 {
