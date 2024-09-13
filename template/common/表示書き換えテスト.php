@@ -87,10 +87,26 @@
                 global $dbh;
                 $dbh = connectToDb();
                 $articles = []; // 結果を保存する配列
-                $sql = "SELECT * FROM articles "; // 基本のSQLクエリ
+                $sql = "SELECT 
+                             u.name as user_name,
+                             a.created_at,
+                             mjrc.name as major_category_name,
+                             minc.name as minor_category_name,
+                             a.content
+                         from 
+                             articles a
+                         inner join 
+                             users u
+                         on a.user_id = u.user_id
+                         inner join
+                             major_categories mjrc
+                         on a.major_category_id = mjrc.major_category_id
+                         inner join 
+                             minor_categories minc
+                         on a.minor_category_id = minc.minor_category_id "; // 基本のSQLクエリ
                 $conditions = []; // WHERE条件を保存する配列
                 $params = []; // パラメータを保存する配列
-            
+                
                 // 条件分岐でクエリを作成
                 switch($searchSwitch) {
                     case 0:
@@ -98,44 +114,45 @@
                         break;
                     case 1:
                         // キーワードのみで検索
-                        $conditions[] = "content LIKE :keyword";
+                        $conditions[] = "a.content LIKE :keyword";
                         $params[':keyword'] = '%' . $keyWord . '%';//部分一致のためワイルドカードを追加
                         break;
                     case 2:
                         // メインカテゴリーのみで検索
-                        $conditions[] = "major_category_id = :mainSearchCategory";
+                        $conditions[] = "a.major_category_id = :mainSearchCategory";
                         $params[':mainSearchCategory'] = $mainSearchCategory;
                         break;
                     case 3:
                         // メインカテゴリーとキーワードで検索
-                        $conditions[] = "major_category_id = :mainSearchCategory";
+                        $conditions[] = "a.major_category_id = :mainSearchCategory";
                         $conditions[] = "content LIKE :keyword";
                         $params[':mainSearchCategory'] = $mainSearchCategory;
                         $params[':keyword'] = '%' . $keyWord . '%';
                         break;
                     case 4:
                         // メインカテゴリーとサブカテゴリーで検索
-                        $conditions[] = "major_category_id = :mainSearchCategory";
-                        $conditions[] = "minor_category_id = :subSearchCategory";
+                        $conditions[] = "a.major_category_id = :mainSearchCategory";
+                        $conditions[] = "a.minor_category_id = :subSearchCategory";
                         $params[':mainSearchCategory'] = $mainSearchCategory;
                         $params[':subSearchCategory'] = $subSearchCategory;
                         break;
                     case 5:
                         // メインカテゴリー、サブカテゴリー、キーワードで検索
-                        $conditions[] = "major_category_id = :mainSearchCategory";
-                        $conditions[] = "minor_category_id = :subSearchCategory";
+                        $conditions[] = "a.major_category_id = :mainSearchCategory";
+                        $conditions[] = "a.minor_category_id = :subSearchCategory";
                         $conditions[] = "content LIKE :keyword";
                         $params[':mainSearchCategory'] = $mainSearchCategory;
                         $params[':subSearchCategory'] = $subSearchCategory;
                         $params[':keyword'] = '%' . $keyWord . '%';
                         break;
                 }
-            
+                $conditionsCount =0;//
                 // 条件がある場合はWHERE句を追加
                 if (count($conditions) > 0) {
                     $sql .= " WHERE " . implode(" AND ", $conditions);
                 }
-            
+                
+                
                 // クエリを実行して記事を取得
                 $stmt = $dbh->prepare($sql);
                 $stmt->execute($params);
@@ -183,13 +200,15 @@
                         }
                     }
                 }
-            
+
+
+
                 // 結果から件数と記事を取得
                 $count = $result['count'];
                 $articles = $result['articles'];
             
                 // 件数を使ってメッセージを更新
-                $replace = str_replace('○○の検索結果：××件', "{$keyword}の検索結果:{$count}件", $text);
+                $replace = str_replace('○○の検索結果：××件', "の検索結果:{$count}件", $text);
             }
             
             
@@ -295,5 +314,6 @@
     </script>
         <!-- DBの接続を切る -->
         <?php $dbh = disconnectDb(); ?>
+    </div>
 </body>
 </html>
