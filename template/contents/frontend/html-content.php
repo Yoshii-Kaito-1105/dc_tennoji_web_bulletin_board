@@ -46,6 +46,7 @@
 <body>
    <!--ヘッダー埋め込み-->
    <?php require_once(__DIR__.   '../../../common/header.php') ?>
+
     <h2 class="new-page">最新の記事</h2>
         <?php foreach ($articles as $article) {
             $userName = $article['user_name'];
