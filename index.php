@@ -83,9 +83,7 @@
                     <div class="toukouhonnbunn">
                         <div class="hissu" >必須</div>投稿内容：<textarea name="text" rows="5" required></textarea>
                     </div>
-                    <div class="btn" type="submit">
-                        <button>投稿する</button>
-                    </div>
+                        <button class="btn" type="submit">投稿する</button>
                 </div>
             </div>
         </form>
