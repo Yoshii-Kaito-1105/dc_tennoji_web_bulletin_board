@@ -1,6 +1,7 @@
 <!-- データベース接続管理 -->
 <?php
 
+// データベース
 include "PgDao.php";
 
 $dbh = null;
