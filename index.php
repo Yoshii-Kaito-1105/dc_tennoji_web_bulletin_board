@@ -1,3 +1,4 @@
+<!-- ホーム画面 -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -6,11 +7,12 @@
     <link rel="stylesheet" href="./template/common/css/style.css  ">
 </head>
 <body>
-    <!--ヘッダー埋め込み-->
+    <!--ヘッダー埋め込み(絶対パスを指定して読み込む)-->
     <?php require_once(__DIR__ .  "../../dc_tennoji_web_bulletin_board/template/common/header.php") ?>
     
     <!-- ホーム画面の画像 -->
     <img class="top-image" src="./image/仮置き画像.gif"></img>
+    <!-- ハンバーガーメニュー -->
     <div class="hamburger-menu">
         <input type="checkbox" id="menu-btn-check">
         <label for="menu-btn-check" class="menu-btn"><span></span></label>
@@ -143,7 +145,7 @@
             }
         });
     </script>
-        <!--フッター埋め込み-->
+        <!-- フッター埋め込み(絶対パスを指定して読み込む) -->
         <?php require_once(__DIR__ .  "../../dc_tennoji_web_bulletin_board/template/common/footer.php") ?>
 </body>
 </html>
